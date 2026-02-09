@@ -1,0 +1,136 @@
+/* Dark Theme for EduTrack */
+.root {
+    -fx-background-color: #1e1e2e;
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* Login Container */
+.login-container {
+    -fx-background-color: #2b2b3c;
+    -fx-background-radius: 15;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 20, 0, 0, 5);
+}
+
+/* Text Fields */
+.text-field, .password-field {
+    -fx-background-color: #363648;
+    -fx-text-fill: #e0e0e0;
+    -fx-prompt-text-fill: #888888;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-padding: 12;
+    -fx-font-size: 14px;
+}
+
+.text-field:focused, .password-field:focused {
+    -fx-background-color: #404052;
+    -fx-border-color: #6c63ff;
+    -fx-border-width: 2;
+}
+
+/* Buttons */
+.button {
+    -fx-background-color: #6c63ff;
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+    -fx-padding: 12 30;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #5848ff;
+    -fx-scale-y: 1.05;
+}
+
+.button:pressed {
+    -fx-background-color: #4a3acc;
+}
+
+/* Labels */
+.label {
+    -fx-text-fill: #e0e0e0;
+    -fx-font-size: 14px;
+}
+
+.title-label {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+}
+
+.subtitle-label {
+    -fx-text-fill: #b0b0b0;
+    -fx-font-size: 14px;
+}
+
+/* ComboBox (for role selection) */
+.combo-box {
+    -fx-background-color: #363648;
+    -fx-background-radius: 8;
+}
+
+.combo-box .list-cell {
+    -fx-background-color: #363648;
+    -fx-text-fill: #e0e0e0;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: #363648;
+}
+
+/* Error Label */
+.error-label {
+    -fx-text-fill: #ff6b6b;
+    -fx-font-size: 12px;
+}
+/* Top Bar */
+.top-bar {
+    -fx-min-height: 80;
+}
+
+/* Dashboard Cards */
+.dashboard-card {
+    -fx-background-color: #2b2b3c;
+    -fx-background-radius: 15;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 15, 0, 0, 3);
+    -fx-cursor: hand;
+}
+
+.dashboard-card:hover {
+    -fx-background-color: #363648;
+    -fx-scale-y: 1.03;
+    -fx-scale-x: 1.03;
+}
+
+.card-title {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.card-subtitle {
+    -fx-text-fill: #b0b0b0;
+    -fx-font-size: 12px;
+    -fx-text-alignment: center;
+}
+
+/* Card Buttons */
+.dashboard-card .button {
+    -fx-background-color: #6c63ff;
+    -fx-text-fill: white;
+    -fx-background-radius: 6;
+    -fx-padding: 8 20;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+/* Error Label */
+.error-label {
+    -fx-text-fill: #ff6b6b;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+.dashboard-card .button:hover {
+    -fx-background-color: #5848ff;
+}
