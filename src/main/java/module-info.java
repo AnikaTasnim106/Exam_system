@@ -4,6 +4,7 @@ module com.buet.edutrack {
 
     opens com.buet.edutrack to javafx.fxml;
     opens com.buet.edutrack.controllers to javafx.fxml;
+    opens com.buet.edutrack.models to javafx.base;  // ADD THIS LINE!
 
     exports com.buet.edutrack;
     exports com.buet.edutrack.controllers;

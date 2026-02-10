@@ -2,6 +2,7 @@ package com.buet.edutrack.controllers;
 import com.buet.edutrack.models.User;
 import com.buet.edutrack.services.UserService;
 import com.buet.edutrack.utils.SceneManager;
+import com.buet.edutrack.utils.SessionManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
@@ -27,6 +28,7 @@ public class LoginController {
         roleComboBox.getItems().addAll("Student", "Teacher");
         roleComboBox.setValue("Student");
     }
+
     @FXML
     private void handleLogin() {
         String username = usernameField.getText();
@@ -53,6 +55,9 @@ public class LoginController {
             showError("Please select the correct role for your account!");
             return;
         }
+
+        // Set current user in session
+        SessionManager.setCurrentUser(user);
 
         // Navigate to appropriate dashboard
         if (user.getRole().equals("Student")) {

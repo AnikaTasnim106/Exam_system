@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #1e1e2e;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buet.edutrack.controllers.CreateExamController">
+
+    <!-- Top Bar -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-background-color: #0f3460; -fx-padding: 20 30;">
+            <Label style="-fx-font-size: 28px; -fx-text-fill: #f8ffbd; -fx-font-weight: bold;" text="Create New Exam" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Button onAction="#handleBack" style="-fx-background-color: #e94560; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 8; -fx-font-weight: bold;" text="← Back to Dashboard" />
+        </HBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background: #1e1e2e; -fx-background-color: #1e1e2e;">
+            <VBox spacing="25" style="-fx-background-color: #1e1e2e;">
+                <padding>
+                    <Insets bottom="40" left="50" right="50" top="40" />
+                </padding>
+
+                <!-- Exam Details Card -->
+                <VBox spacing="20" style="-fx-background-color: #2b2b3c; -fx-background-radius: 15; -fx-padding: 30;">
+                    <Label style="-fx-font-size: 22px; -fx-text-fill: white; -fx-font-weight: bold;" text="📝 Exam Details" />
+
+                    <!-- Exam Title -->
+                    <VBox spacing="8">
+                        <Label style="-fx-text-fill: #b0b0b0; -fx-font-size: 14px;" text="Exam Title *" />
+                        <TextField fx:id="titleField" promptText="e.g., Midterm Physics Exam" style="-fx-background-color: #363648; -fx-text-fill: white; -fx-prompt-text-fill: #888888; -fx-background-radius: 8; -fx-padding: 12; -fx-font-size: 14px;" />
+                    </VBox>
+
+                    <!-- Subject and Duration Row -->
+                    <HBox spacing="20">
+                        <VBox spacing="8" HBox.hgrow="ALWAYS">
+                            <Label style="-fx-text-fill: #b0b0b0; -fx-font-size: 14px;" text="Subject *" textFill="#a78bb4" />
+                            <ComboBox fx:id="subjectCombo" prefWidth="300" promptText="Select subject" style="-fx-background-color: a78bb4; -fx-background-radius: 8;" />
+                        </VBox>
+
+                        <VBox spacing="8">
+                            <Label style="-fx-text-fill: #b0b0b0; -fx-font-size: 14px;" text="Duration (minutes) *" />
+                            <Spinner fx:id="durationSpinner" editable="true" prefWidth="150" style="-fx-background-color: #363648;" />
+                        </VBox>
+                    </HBox>
+
+                    <!-- Description -->
+                    <VBox spacing="8">
+                        <Label style="-fx-text-fill: #b0b0b0; -fx-font-size: 14px;" text="Description" />
+                        <TextArea fx:id="descriptionArea" prefRowCount="3" promptText="Brief description of the exam..." style="-fx-background-color: #363648; -fx-text-fill: black; -fx-prompt-text-fill: #888888; -fx-background-radius: 8; -fx-padding: 12; -fx-font-size: 14px;" wrapText="true" />
+                    </VBox>
+
+                    <!-- Error Label -->
+                    <Label fx:id="errorLabel" managed="false" style="-fx-text-fill: #ff6b6b; -fx-font-size: 14px; -fx-font-weight: bold;" text="Error message" visible="false" />
+                </VBox>
+
+                <!-- Question Selection Card -->
+                <VBox spacing="20" style="-fx-background-color: #2b2b3c; -fx-background-radius: 15; -fx-padding: 30;">
+                    <HBox alignment="CENTER_LEFT" spacing="15">
+                        <Label style="-fx-font-size: 22px; -fx-text-fill: white; -fx-font-weight: bold;" text="📚 Select Questions" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Label fx:id="selectedCountLabel" style="-fx-font-size: 16px; -fx-text-fill: #6c63ff; -fx-font-weight: bold;" text="0 questions selected" />
+                    </HBox>
+
+                    <!-- Filter Options -->
+                    <HBox spacing="15">
+                        <VBox spacing="8">
+                            <Label style="-fx-text-fill: #b0b0b0; -fx-font-size: 13px;" text="Filter by Subject" />
+                            <ComboBox fx:id="filterSubjectCombo" onAction="#handleFilterChange" prefWidth="200" style="-fx-background-color: a78bb4; -fx-background-radius: 8;" />
+                        </VBox>
+
+                        <VBox spacing="8">
+                            <Label style="-fx-text-fill: #b0b0b0; -fx-font-size: 13px;" text="Filter by Difficulty" />
+                            <ComboBox fx:id="filterDifficultyCombo" onAction="#handleFilterChange" prefWidth="150" style="-fx-background-color: a78bb4; -fx-background-radius: 8;" />
+                        </VBox>
+
+                        <Region HBox.hgrow="ALWAYS" />
+
+                        <VBox alignment="BOTTOM_CENTER">
+                            <Button onAction="#handleSelectAll" style="-fx-background-color: #6c63ff; -fx-text-fill: white; -fx-padding: 10 20; -fx-background-radius: 8; -fx-font-weight: bold;" text="Select All" />
+                        </VBox>
+
+                        <VBox alignment="BOTTOM_CENTER">
+                            <Button onAction="#handleDeselectAll" style="-fx-background-color: #e94560; -fx-text-fill: white; -fx-padding: 10 20; -fx-background-radius: 8; -fx-font-weight: bold;" text="Deselect All" />
+                        </VBox>
+                    </HBox>
+
+                    <!-- Questions Table -->
+                    <TableView fx:id="questionsTable" prefHeight="400" style="-fx-background-color: #363648; -fx-background-radius: 10;">
+                        <columns>
+                            <TableColumn fx:id="selectColumn" prefWidth="60" text="Select" />
+                            <TableColumn fx:id="subjectColumn" prefWidth="140" text="Subject" />
+                            <TableColumn fx:id="questionColumn" prefWidth="500" text="Question" />
+                            <TableColumn fx:id="difficultyColumn" prefWidth="100" text="Difficulty" />
+                            <TableColumn fx:id="answerColumn" prefWidth="80" text="Answer" />
+                        </columns>
+                    </TableView>
+                </VBox>
+
+                <!-- Action Buttons -->
+                <HBox alignment="CENTER" spacing="20">
+                    <Button onAction="#handleCancel" style="-fx-background-color: #666666; -fx-text-fill: white; -fx-padding: 15 40; -fx-background-radius: 10; -fx-font-size: 16px; -fx-font-weight: bold;" text="Cancel" />
+                    <Button onAction="#handleCreateExam" style="-fx-background-color: #6c63ff; -fx-text-fill: white; -fx-padding: 15 40; -fx-background-radius: 10; -fx-font-size: 16px; -fx-font-weight: bold;" text="Create Exam" />
+                </HBox>
+
+            </VBox>
+        </ScrollPane>
+    </center>
+
+</BorderPane>

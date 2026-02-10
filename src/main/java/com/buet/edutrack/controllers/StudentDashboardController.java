@@ -1,6 +1,7 @@
 package com.buet.edutrack.controllers;
 
 import com.buet.edutrack.utils.SceneManager;
+import com.buet.edutrack.utils.SessionManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -24,24 +25,28 @@ public class StudentDashboardController {
 
     @FXML
     public void initialize() {
-        welcomeLabel.setText("Hello!");
+        String username = SessionManager.getCurrentUsername();
+        if (username != null) {
+            welcomeLabel.setText("Hello, " + username + "!");
+        } else {
+            welcomeLabel.setText("Hello!");
+        }
     }
 
     @FXML
     private void handleLogout() {
+        SessionManager.logout();
         SceneManager.switchScene("/views/login.fxml");
     }
 
     @FXML
     private void handleAttendExam() {
-        System.out.println("Attend Exam clicked");
-        // TODO: Navigate to exam selection
+        SceneManager.switchScene("/views/exam-list.fxml");
     }
 
     @FXML
     private void handleViewResult() {
-        System.out.println("View Results clicked");
-        // TODO: Navigate to results
+        SceneManager.switchScene("/views/view-results.fxml");
     }
 
     @FXML

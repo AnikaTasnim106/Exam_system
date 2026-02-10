@@ -44,12 +44,12 @@
             </HBox>
 
             <!-- Questions Table -->
-            <TableView fx:id="questionsTable" style="-fx-background-color: #8e4ddc; -fx-control-inner-background: #8e4ddc;" VBox.vgrow="ALWAYS">
+            <TableView fx:id="questionsTable" style="-fx-background-color: #2b2b3c; -fx-text-fill: green;" VBox.vgrow="ALWAYS">
                 <columns>
-                    <TableColumn fx:id="subjectColumn" prefWidth="120" text="Subject" />
-                    <TableColumn fx:id="questionColumn" prefWidth="350" text="Question" />
-                    <TableColumn fx:id="difficultyColumn" prefWidth="100" text="Difficulty" />
-                    <TableColumn fx:id="correctAnswerColumn" prefWidth="80" text="Answer" />
+                    <TableColumn fx:id="subjectColumn" prefWidth="120" style="-fx-text-fill: green;" text="Subject" />
+                    <TableColumn fx:id="questionColumn" prefWidth="350" style="-fx-text-fill: green;" text="Question" />
+                    <TableColumn fx:id="difficultyColumn" prefWidth="100" style="-fx-text-fill: green;" text="Difficulty" />
+                    <TableColumn fx:id="correctAnswerColumn" prefWidth="80" style="-fx-text-fill: green;" text="Answer" />
                     <TableColumn fx:id="actionsColumn" prefWidth="150" text="Actions" />
                 </columns>
             </TableView>

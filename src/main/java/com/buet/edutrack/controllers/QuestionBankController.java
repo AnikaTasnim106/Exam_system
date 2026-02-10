@@ -42,7 +42,37 @@ public class QuestionBankController {
         difficultyColumn.setCellValueFactory(new PropertyValueFactory<>("difficulty"));
         correctAnswerColumn.setCellValueFactory(new PropertyValueFactory<>("correctAnswer"));
 
-        // Style difficulty column with colors
+        // Style SUBJECT column - WHITE TEXT
+        subjectColumn.setCellFactory(column -> new TableCell<Question, String>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                    setStyle("");
+                } else {
+                    setText(item);
+                    setStyle("-fx-text-fill: white; -fx-font-weight: bold;");
+                }
+            }
+        });
+
+        // Style QUESTION column - WHITE TEXT
+        questionColumn.setCellFactory(column -> new TableCell<Question, String>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                    setStyle("");
+                } else {
+                    setText(item);
+                    setStyle("-fx-text-fill: white;");
+                }
+            }
+        });
+
+        // Style DIFFICULTY column - COLORED TEXT
         difficultyColumn.setCellFactory(column -> new TableCell<Question, String>() {
             @Override
             protected void updateItem(String difficulty, boolean empty) {
@@ -62,7 +92,25 @@ public class QuestionBankController {
                         case "Hard":
                             setStyle("-fx-text-fill: #ff0000; -fx-font-weight: bold;");
                             break;
+                        default:
+                            setStyle("-fx-text-fill: white; -fx-font-weight: bold;");
+                            break;
                     }
+                }
+            }
+        });
+
+        // Style CORRECT ANSWER column - WHITE TEXT
+        correctAnswerColumn.setCellFactory(column -> new TableCell<Question, String>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                    setStyle("");
+                } else {
+                    setText(item);
+                    setStyle("-fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px;");
                 }
             }
         });
@@ -110,6 +158,18 @@ public class QuestionBankController {
 
     private void loadQuestions() {
         List<Question> questions = QuestionService.getAllQuestions();
+
+        // DEBUG
+        System.out.println("=== LOADING QUESTIONS ===");
+        System.out.println("Total questions: " + questions.size());
+        for (Question q : questions) {
+            System.out.println("Subject: " + q.getSubject());
+            System.out.println("Question: " + q.getQuestionText());
+            System.out.println("Difficulty: " + q.getDifficulty());
+            System.out.println("Answer: " + q.getCorrectAnswer());
+            System.out.println("---");
+        }
+
         questionsList.setAll(questions);
         updateQuestionCount();
         toggleEmptyState();
