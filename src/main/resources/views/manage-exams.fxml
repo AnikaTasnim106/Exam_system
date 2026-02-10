@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #1e1e2e;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buet.edutrack.controllers.ManageExamsController">
+
+    <!-- Top Bar -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-background-color: #0f3460; -fx-padding: 20 30;">
+            <Label style="-fx-font-size: 28px; -fx-text-fill: #f8ffbd; -fx-font-weight: bold;" text="Manage Exams" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Button onAction="#handleCreateNew" style="-fx-background-color: #00C851; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 8; -fx-font-weight: bold;" text="+ Create New Exam" />
+            <Button onAction="#handleBack" style="-fx-background-color: #e94560; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 8; -fx-font-weight: bold;" text="← Back" />
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="30" style="-fx-background-color: #1e1e2e;">
+            <padding>
+                <Insets bottom="40" left="50" right="50" top="40" />
+            </padding>
+
+            <!-- Filter and Stats -->
+            <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-background-color: #2b2b3c; -fx-background-radius: 15; -fx-padding: 20 30;">
+                <Label style="-fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold;" text="Filter:" />
+                <ComboBox fx:id="subjectFilterCombo" onAction="#handleFilter" prefWidth="200" promptText="All Subjects" style="-fx-background-color: #363648;" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Label fx:id="examCountLabel" style="-fx-text-fill: #6c63ff; -fx-font-size: 16px; -fx-font-weight: bold;" text="0 exams" />
+            </HBox>
+
+            <!-- Exams Table -->
+            <VBox spacing="15" style="-fx-background-color: #2b2b3c; -fx-background-radius: 15; -fx-padding: 30;">
+                <Label style="-fx-text-fill: white; -fx-font-size: 22px; -fx-font-weight: bold;" text="📝 Your Exams" />
+                
+                <TableView fx:id="examsTable" prefHeight="450" style="-fx-background-color: #363648; -fx-background-radius: 10;">
+                    <columns>
+                        <TableColumn fx:id="titleColumn" prefWidth="250" text="Title" />
+                        <TableColumn fx:id="subjectColumn" prefWidth="150" text="Subject" />
+                        <TableColumn fx:id="questionsColumn" prefWidth="120" text="Questions" />
+                        <TableColumn fx:id="durationColumn" prefWidth="120" text="Duration" />
+                        <TableColumn fx:id="studentsColumn" prefWidth="120" text="Students" />
+                        <TableColumn fx:id="dateColumn" prefWidth="150" text="Created" />
+                        <TableColumn fx:id="actionsColumn" prefWidth="250" text="Actions" />
+                    </columns>
+                </TableView>
+            </VBox>
+
+            <!-- Empty State -->
+            <VBox fx:id="emptyStateBox" alignment="CENTER" managed="false" spacing="15" style="-fx-background-color: #2b2b3c; -fx-background-radius: 15; -fx-padding: 60;" visible="false">
+                <Label style="-fx-font-size: 60px;" text="📝" />
+                <Label style="-fx-text-fill: white; -fx-font-size: 22px; -fx-font-weight: bold;" text="No Exams Created Yet" />
+                <Label style="-fx-text-fill: #b0b0b0; -fx-font-size: 14px;" text="Create your first exam to get started" />
+                <Button onAction="#handleCreateNew" style="-fx-background-color: #6c63ff; -fx-text-fill: white; -fx-padding: 12 30; -fx-background-radius: 8; -fx-font-weight: bold; -fx-font-size: 14px;" text="Create Exam" />
+            </VBox>
+
+        </VBox>
+    </center>
+
+</BorderPane>

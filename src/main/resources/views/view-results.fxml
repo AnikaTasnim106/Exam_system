@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #1e1e2e;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buet.edutrack.controllers.ViewResultsController">
+
+    <!-- Top Bar -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-background-color: #0f3460; -fx-padding: 20 30;">
+            <Label style="-fx-font-size: 28px; -fx-text-fill: #f8ffbd; -fx-font-weight: bold;" text="My Results" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Button onAction="#handleBack" style="-fx-background-color: #e94560; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 8; -fx-font-weight: bold;" text="← Back to Dashboard" />
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="30" style="-fx-background-color: #1e1e2e;">
+            <padding>
+                <Insets bottom="40" left="50" right="50" top="40" />
+            </padding>
+
+            <!-- Stats Cards -->
+            <HBox spacing="20">
+                <!-- Total Exams -->
+                <VBox alignment="CENTER" spacing="10" style="-fx-background-color: linear-gradient(to bottom right, #667eea 0%, #764ba2 100%); -fx-background-radius: 15; -fx-padding: 25;" HBox.hgrow="ALWAYS">
+                    <Label style="-fx-font-size: 40px;" text="📝" />
+                    <Label fx:id="totalExamsLabel" style="-fx-text-fill: white; -fx-font-size: 32px; -fx-font-weight: bold;" text="0" />
+                    <Label style="-fx-text-fill: rgba(255,255,255,0.9); -fx-font-size: 14px;" text="Exams Taken" />
+                </VBox>
+
+                <!-- Average Score -->
+                <VBox alignment="CENTER" spacing="10" style="-fx-background-color: linear-gradient(to bottom right, #ffeaa7 0%, #fdcb6e 100%); -fx-background-radius: 15; -fx-padding: 25;" HBox.hgrow="ALWAYS">
+                    <Label style="-fx-font-size: 40px;" text="⭐" />
+                    <Label fx:id="avgScoreLabel" style="-fx-text-fill: white; -fx-font-size: 32px; -fx-font-weight: bold;" text="0%" />
+                    <Label style="-fx-text-fill: rgba(255,255,255,0.9); -fx-font-size: 14px;" text="Average Score" />
+                </VBox>
+
+                <!-- Best Grade -->
+                <VBox alignment="CENTER" spacing="10" style="-fx-background-color: linear-gradient(to bottom right, #00C851 0%, #007E33 100%); -fx-background-radius: 15; -fx-padding: 25;" HBox.hgrow="ALWAYS">
+                    <Label style="-fx-font-size: 40px;" text="🏆" />
+                    <Label fx:id="bestGradeLabel" style="-fx-text-fill: white; -fx-font-size: 32px; -fx-font-weight: bold;" text="-" />
+                    <Label style="-fx-text-fill: rgba(255,255,255,0.9); -fx-font-size: 14px;" text="Best Grade" />
+                </VBox>
+            </HBox>
+
+            <!-- Results Table -->
+            <VBox spacing="15" style="-fx-background-color: #2b2b3c; -fx-background-radius: 15; -fx-padding: 30;">
+                <Label style="-fx-text-fill: white; -fx-font-size: 22px; -fx-font-weight: bold;" text="📊 Exam History" />
+                
+                <TableView fx:id="resultsTable" prefHeight="400" style="-fx-background-color: #363648; -fx-background-radius: 10;">
+                    <columns>
+                        <TableColumn fx:id="examTitleColumn" prefWidth="250" text="Exam Title" />
+                        <TableColumn fx:id="subjectColumn" prefWidth="150" text="Subject" />
+                        <TableColumn fx:id="scoreColumn" prefWidth="120" text="Score" />
+                        <TableColumn fx:id="percentageColumn" prefWidth="120" text="Percentage" />
+                        <TableColumn fx:id="gradeColumn" prefWidth="100" text="Grade" />
+                        <TableColumn fx:id="dateColumn" prefWidth="180" text="Date" />
+                        <TableColumn fx:id="actionsColumn" prefWidth="150" text="Actions" />
+                    </columns>
+                </TableView>
+            </VBox>
+
+            <!-- Empty State -->
+            <VBox fx:id="emptyStateBox" alignment="CENTER" managed="false" spacing="15" style="-fx-background-color: #2b2b3c; -fx-background-radius: 15; -fx-padding: 60;" visible="false">
+                <Label style="-fx-font-size: 60px;" text="📋" />
+                <Label style="-fx-text-fill: white; -fx-font-size: 22px; -fx-font-weight: bold;" text="No Results Yet" />
+                <Label style="-fx-text-fill: #b0b0b0; -fx-font-size: 14px;" text="Take an exam to see your results here" />
+                <Button onAction="#handleTakeExam" style="-fx-background-color: #6c63ff; -fx-text-fill: white; -fx-padding: 12 30; -fx-background-radius: 8; -fx-font-weight: bold; -fx-font-size: 14px;" text="Take an Exam" />
+            </VBox>
+
+        </VBox>
+    </center>
+
+</BorderPane>
