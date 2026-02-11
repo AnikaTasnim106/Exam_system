@@ -57,10 +57,10 @@ public class ManageExamsController {
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
 
         // Style columns
-        titleColumn.setCellFactory(column -> createStyledCell("white", true));
+        titleColumn.setCellFactory(column -> createStyledCell("black", true));
         subjectColumn.setCellFactory(column -> createStyledCell("#6c63ff", true));
-        questionsColumn.setCellFactory(column -> createStyledCell("white", false));
-        durationColumn.setCellFactory(column -> createStyledCell("white", false));
+        questionsColumn.setCellFactory(column -> createStyledCell("black", false));
+        durationColumn.setCellFactory(column -> createStyledCell("black", false));
         studentsColumn.setCellFactory(column -> createStyledCell("#00C851", true));
         dateColumn.setCellFactory(column -> createStyledCell("#b0b0b0", false));
 

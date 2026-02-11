@@ -90,7 +90,7 @@ public class CreateExamController {
                     setStyle("");
                 } else {
                     setText(item);
-                    setStyle("-fx-text-fill: white; -fx-font-weight: bold;");
+                    setStyle("-fx-text-fill: black; -fx-font-weight: bold;");
                 }
             }
         });
@@ -106,7 +106,7 @@ public class CreateExamController {
                     setStyle("");
                 } else {
                     setText(item.length() > 60 ? item.substring(0, 60) + "..." : item);
-                    setStyle("-fx-text-fill: white;");
+                    setStyle("-fx-text-fill: black;");
                 }
             }
         });
@@ -151,7 +151,7 @@ public class CreateExamController {
                     setStyle("");
                 } else {
                     setText(item);
-                    setStyle("-fx-text-fill: white; -fx-font-weight: bold;");
+                    setStyle("-fx-text-fill: black; -fx-font-weight: bold;");
                 }
             }
         });

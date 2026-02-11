@@ -52,7 +52,7 @@ public class QuestionBankController {
                     setStyle("");
                 } else {
                     setText(item);
-                    setStyle("-fx-text-fill: white; -fx-font-weight: bold;");
+                    setStyle("-fx-text-fill: black; -fx-font-weight: bold;");
                 }
             }
         });
@@ -67,7 +67,7 @@ public class QuestionBankController {
                     setStyle("");
                 } else {
                     setText(item);
-                    setStyle("-fx-text-fill: white;");
+                    setStyle("-fx-text-fill: black;");
                 }
             }
         });
@@ -93,7 +93,7 @@ public class QuestionBankController {
                             setStyle("-fx-text-fill: #ff0000; -fx-font-weight: bold;");
                             break;
                         default:
-                            setStyle("-fx-text-fill: white; -fx-font-weight: bold;");
+                            setStyle("-fx-text-fill: black; -fx-font-weight: bold;");
                             break;
                     }
                 }
@@ -110,7 +110,7 @@ public class QuestionBankController {
                     setStyle("");
                 } else {
                     setText(item);
-                    setStyle("-fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px;");
+                    setStyle("-fx-text-fill: black; -fx-font-weight: bold; -fx-font-size: 14px;");
                 }
             }
         });
