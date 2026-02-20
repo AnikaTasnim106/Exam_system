@@ -21,17 +21,28 @@ import java.util.*;
 
 public class TakeExamController {
 
-    @FXML private Label examTitleLabel;
-    @FXML private Label timerLabel;
-    @FXML private Label progressLabel;
-    @FXML private GridPane questionNavGrid;
-    @FXML private Label questionNumberLabel;
-    @FXML private Label questionSubjectLabel;
-    @FXML private Label questionDifficultyLabel;
-    @FXML private Label questionTextLabel;
-    @FXML private VBox optionsBox;
-    @FXML private Button prevButton;
-    @FXML private Button nextButton;
+    @FXML
+    private Label examTitleLabel;
+    @FXML
+    private Label timerLabel;
+    @FXML
+    private Label progressLabel;
+    @FXML
+    private GridPane questionNavGrid;
+    @FXML
+    private Label questionNumberLabel;
+    @FXML
+    private Label questionSubjectLabel;
+    @FXML
+    private Label questionDifficultyLabel;
+    @FXML
+    private Label questionTextLabel;
+    @FXML
+    private VBox optionsBox;
+    @FXML
+    private Button prevButton;
+    @FXML
+    private Button nextButton;
 
     private static Exam currentExam;
     private List<Question> questions = new ArrayList<>();
@@ -276,8 +287,6 @@ public class TakeExamController {
 
     private void submitExam() {
         timer.stop();
-
-        // Calculate score
         int correct = 0;
         for (Question q : questions) {
             String studentAnswer = studentAnswers.getOrDefault(q.getId(), "");
@@ -285,24 +294,14 @@ public class TakeExamController {
                 correct++;
             }
         }
-
-        // Get current username
         String currentUsername = SessionManager.getCurrentUsername();
         if (currentUsername == null) currentUsername = "student";
-
-        // Create result
         Result result = new Result(currentExam.getId(), currentUsername);
         result.calculateScore(questions.size(), correct);
         result.setStudentAnswers(studentAnswers);
         result.setTimeTaken(startTimeSeconds - remainingSeconds);
-
-        // Save result
         ResultService.addResult(result);
-
-        // Show result
         showResultDialog(result);
-
-        // Navigate back
         SceneManager.switchScene("/views/student-dashboard.fxml");
     }
 

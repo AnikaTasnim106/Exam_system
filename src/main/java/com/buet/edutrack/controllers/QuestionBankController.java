@@ -15,17 +15,24 @@ import java.util.List;
 import java.util.Optional;
 
 public class QuestionBankController {
-
-    @FXML private TableView<Question> questionsTable;
-    @FXML private TableColumn<Question, String> subjectColumn;
-    @FXML private TableColumn<Question, String> questionColumn;
-    @FXML private TableColumn<Question, String> difficultyColumn;
-    @FXML private TableColumn<Question, String> correctAnswerColumn;
-    @FXML private TableColumn<Question, Void> actionsColumn;
-    @FXML private ComboBox<String> subjectFilterCombo;
-    @FXML private Label questionCountLabel;
-    @FXML private VBox emptyStateBox;
-
+    @FXML
+    private TableView<Question> questionsTable;
+    @FXML
+    private TableColumn<Question, String> subjectColumn;
+    @FXML
+    private TableColumn<Question, String> questionColumn;
+    @FXML
+    private TableColumn<Question, String> difficultyColumn;
+    @FXML
+    private TableColumn<Question, String> correctAnswerColumn;
+    @FXML
+    private TableColumn<Question, Void> actionsColumn;
+    @FXML
+    private ComboBox<String> subjectFilterCombo;
+    @FXML
+    private Label questionCountLabel;
+    @FXML
+    private VBox emptyStateBox;
     private ObservableList<Question> questionsList = FXCollections.observableArrayList();
 
     @FXML
@@ -36,13 +43,10 @@ public class QuestionBankController {
     }
 
     private void setupTable() {
-        // Configure columns
         subjectColumn.setCellValueFactory(new PropertyValueFactory<>("subject"));
         questionColumn.setCellValueFactory(new PropertyValueFactory<>("questionText"));
         difficultyColumn.setCellValueFactory(new PropertyValueFactory<>("difficulty"));
         correctAnswerColumn.setCellValueFactory(new PropertyValueFactory<>("correctAnswer"));
-
-        // Style SUBJECT column - WHITE TEXT
         subjectColumn.setCellFactory(column -> new TableCell<Question, String>() {
             @Override
             protected void updateItem(String item, boolean empty) {
@@ -56,8 +60,6 @@ public class QuestionBankController {
                 }
             }
         });
-
-        // Style QUESTION column - WHITE TEXT
         questionColumn.setCellFactory(column -> new TableCell<Question, String>() {
             @Override
             protected void updateItem(String item, boolean empty) {
@@ -71,8 +73,6 @@ public class QuestionBankController {
                 }
             }
         });
-
-        // Style DIFFICULTY column - COLORED TEXT
         difficultyColumn.setCellFactory(column -> new TableCell<Question, String>() {
             @Override
             protected void updateItem(String difficulty, boolean empty) {
@@ -99,8 +99,6 @@ public class QuestionBankController {
                 }
             }
         });
-
-        // Style CORRECT ANSWER column - WHITE TEXT
         correctAnswerColumn.setCellFactory(column -> new TableCell<Question, String>() {
             @Override
             protected void updateItem(String item, boolean empty) {
@@ -114,8 +112,6 @@ public class QuestionBankController {
                 }
             }
         });
-
-        // Add action buttons (View & Delete)
         actionsColumn.setCellFactory(column -> new TableCell<Question, Void>() {
             private final Button viewButton = new Button("View");
             private final Button deleteButton = new Button("Delete");
@@ -124,12 +120,10 @@ public class QuestionBankController {
             {
                 viewButton.setStyle("-fx-background-color: #6c63ff; -fx-text-fill: white; -fx-padding: 5 15; -fx-background-radius: 5; -fx-cursor: hand;");
                 deleteButton.setStyle("-fx-background-color: #e94560; -fx-text-fill: white; -fx-padding: 5 15; -fx-background-radius: 5; -fx-cursor: hand;");
-
                 viewButton.setOnAction(event -> {
                     Question question = getTableView().getItems().get(getIndex());
                     showQuestionDetails(question);
                 });
-
                 deleteButton.setOnAction(event -> {
                     Question question = getTableView().getItems().get(getIndex());
                     handleDeleteQuestion(question);
@@ -142,7 +136,6 @@ public class QuestionBankController {
                 setGraphic(empty ? null : buttons);
             }
         });
-
         questionsTable.setItems(questionsList);
     }
 
@@ -152,14 +145,11 @@ public class QuestionBankController {
                 "Computer Science", "English", "History", "Geography"
         );
         subjectFilterCombo.setValue("All Subjects");
-
         subjectFilterCombo.setOnAction(e -> filterQuestions());
     }
 
     private void loadQuestions() {
         List<Question> questions = QuestionService.getAllQuestions();
-
-        // DEBUG
         System.out.println("=== LOADING QUESTIONS ===");
         System.out.println("Total questions: " + questions.size());
         for (Question q : questions) {
@@ -169,7 +159,6 @@ public class QuestionBankController {
             System.out.println("Answer: " + q.getCorrectAnswer());
             System.out.println("---");
         }
-
         questionsList.setAll(questions);
         updateQuestionCount();
         toggleEmptyState();
@@ -177,7 +166,6 @@ public class QuestionBankController {
 
     private void filterQuestions() {
         String selected = subjectFilterCombo.getValue();
-
         if ("All Subjects".equals(selected)) {
             loadQuestions();
         } else {

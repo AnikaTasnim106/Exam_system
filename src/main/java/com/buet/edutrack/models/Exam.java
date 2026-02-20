@@ -34,8 +34,6 @@ public class Exam implements Serializable {
     private String generateId() {
         return "EXAM" + System.currentTimeMillis();
     }
-
-    // Getters and Setters
     public String getId() {
         return id;
     }

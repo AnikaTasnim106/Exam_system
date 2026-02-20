@@ -14,40 +14,28 @@ public class ResultService {
     static {
         loadResults();
     }
-
-    // Add a new result
     public static boolean addResult(Result result) {
         results.add(result);
         return saveResults();
     }
-
-    // Get all results
     public static List<Result> getAllResults() {
         return new ArrayList<>(results);
     }
-
-    // Get results by student
     public static List<Result> getResultsByStudent(String studentUsername) {
         return results.stream()
                 .filter(r -> r.getStudentUsername().equals(studentUsername))
                 .collect(Collectors.toList());
     }
-
-    // Get results by exam
     public static List<Result> getResultsByExam(String examId) {
         return results.stream()
                 .filter(r -> r.getExamId().equals(examId))
                 .collect(Collectors.toList());
     }
-
-    // Check if student has already taken an exam
     public static boolean hasStudentTakenExam(String studentUsername, String examId) {
         return results.stream()
                 .anyMatch(r -> r.getStudentUsername().equals(studentUsername) &&
                         r.getExamId().equals(examId));
     }
-
-    // Get result by student and exam
     public static Result getResult(String studentUsername, String examId) {
         return results.stream()
                 .filter(r -> r.getStudentUsername().equals(studentUsername) &&
@@ -55,8 +43,6 @@ public class ResultService {
                 .findFirst()
                 .orElse(null);
     }
-
-    // Save results to file
     private static boolean saveResults() {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(RESULTS_FILE))) {
             oos.writeObject(results);
@@ -66,8 +52,6 @@ public class ResultService {
             return false;
         }
     }
-
-    // Load results from file
     @SuppressWarnings("unchecked")
     private static void loadResults() {
         File file = new File(RESULTS_FILE);

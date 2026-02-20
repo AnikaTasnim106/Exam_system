@@ -15,25 +15,21 @@ public class ExamService {
         loadExams();
     }
 
-    // Add a new exam
     public static boolean addExam(Exam exam) {
         exams.add(exam);
         return saveExams();
     }
 
-    // Get all exams
     public static List<Exam> getAllExams() {
         return new ArrayList<>(exams);
     }
 
-    // Get exams by subject
     public static List<Exam> getExamsBySubject(String subject) {
         return exams.stream()
                 .filter(e -> e.getSubject().equalsIgnoreCase(subject))
                 .collect(Collectors.toList());
     }
 
-    // Get exam by ID
     public static Exam getExamById(String examId) {
         return exams.stream()
                 .filter(e -> e.getId().equals(examId))
@@ -41,7 +37,6 @@ public class ExamService {
                 .orElse(null);
     }
 
-    // Update an exam
     public static boolean updateExam(Exam exam) {
         for (int i = 0; i < exams.size(); i++) {
             if (exams.get(i).getId().equals(exam.getId())) {
@@ -52,7 +47,6 @@ public class ExamService {
         return false;
     }
 
-    // Delete an exam
     public static boolean deleteExam(String examId) {
         boolean removed = exams.removeIf(e -> e.getId().equals(examId));
         if (removed) {
@@ -72,8 +66,6 @@ public class ExamService {
         }
     }
 
-    // Load exams from file
-    @SuppressWarnings("unchecked")
     private static void loadExams() {
         File file = new File(EXAMS_FILE);
         if (file.exists()) {

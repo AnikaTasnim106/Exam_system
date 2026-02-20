@@ -16,7 +16,7 @@ public class Result implements Serializable {
     private double percentage;
     private Map<String, String> studentAnswers;
     private LocalDateTime submittedAt;
-    private int timeTaken; // in seconds
+    private int timeTaken;
 
     public Result() {
         this.id = generateId();

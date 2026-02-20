@@ -15,32 +15,27 @@ public class QuestionService {
         loadQuestions();
     }
 
-    // Add a new question
     public static boolean addQuestion(Question question) {
         questions.add(question);
         return saveQuestions();
     }
 
-    // Get all questions
     public static List<Question> getAllQuestions() {
         return new ArrayList<>(questions);
     }
 
-    // Get questions by subject
     public static List<Question> getQuestionsBySubject(String subject) {
         return questions.stream()
                 .filter(q -> q.getSubject().equalsIgnoreCase(subject))
                 .collect(Collectors.toList());
     }
 
-    // Get questions by difficulty
     public static List<Question> getQuestionsByDifficulty(String difficulty) {
         return questions.stream()
                 .filter(q -> q.getDifficulty().equalsIgnoreCase(difficulty))
                 .collect(Collectors.toList());
     }
 
-    // Delete a question
     public static boolean deleteQuestion(String questionId) {
         boolean removed = questions.removeIf(q -> q.getId().equals(questionId));
         if (removed) {
@@ -49,7 +44,6 @@ public class QuestionService {
         return removed;
     }
 
-    // Save questions to file
     private static boolean saveQuestions() {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(QUESTIONS_FILE))) {
             oos.writeObject(questions);
@@ -60,8 +54,6 @@ public class QuestionService {
         }
     }
 
-    // Load questions from file
-    @SuppressWarnings("unchecked")
     private static void loadQuestions() {
         File file = new File(QUESTIONS_FILE);
         if (file.exists()) {

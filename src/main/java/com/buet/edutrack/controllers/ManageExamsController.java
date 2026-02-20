@@ -17,19 +17,28 @@ import java.util.List;
 import java.util.Optional;
 
 public class ManageExamsController {
-
-    @FXML private ComboBox<String> subjectFilterCombo;
-    @FXML private Label examCountLabel;
-    @FXML private TableView<ExamRow> examsTable;
-    @FXML private TableColumn<ExamRow, String> titleColumn;
-    @FXML private TableColumn<ExamRow, String> subjectColumn;
-    @FXML private TableColumn<ExamRow, String> questionsColumn;
-    @FXML private TableColumn<ExamRow, String> durationColumn;
-    @FXML private TableColumn<ExamRow, String> studentsColumn;
-    @FXML private TableColumn<ExamRow, String> dateColumn;
-    @FXML private TableColumn<ExamRow, Void> actionsColumn;
-    @FXML private VBox emptyStateBox;
-
+    @FXML
+    private ComboBox<String> subjectFilterCombo;
+    @FXML
+    private Label examCountLabel;
+    @FXML
+    private TableView<ExamRow> examsTable;
+    @FXML
+    private TableColumn<ExamRow, String> titleColumn;
+    @FXML
+    private TableColumn<ExamRow, String> subjectColumn;
+    @FXML
+    private TableColumn<ExamRow, String> questionsColumn;
+    @FXML
+    private TableColumn<ExamRow, String> durationColumn;
+    @FXML
+    private TableColumn<ExamRow, String> studentsColumn;
+    @FXML
+    private TableColumn<ExamRow, String> dateColumn;
+    @FXML
+    private TableColumn<ExamRow, Void> actionsColumn;
+    @FXML
+    private VBox emptyStateBox;
     private ObservableList<ExamRow> examRows = FXCollections.observableArrayList();
 
     @FXML
@@ -55,16 +64,12 @@ public class ManageExamsController {
         durationColumn.setCellValueFactory(new PropertyValueFactory<>("duration"));
         studentsColumn.setCellValueFactory(new PropertyValueFactory<>("students"));
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
-
-        // Style columns
         titleColumn.setCellFactory(column -> createStyledCell("black", true));
         subjectColumn.setCellFactory(column -> createStyledCell("#6c63ff", true));
         questionsColumn.setCellFactory(column -> createStyledCell("black", false));
         durationColumn.setCellFactory(column -> createStyledCell("black", false));
         studentsColumn.setCellFactory(column -> createStyledCell("#00C851", true));
         dateColumn.setCellFactory(column -> createStyledCell("#b0b0b0", false));
-
-        // Actions column
         actionsColumn.setCellFactory(column -> new TableCell<ExamRow, Void>() {
             private final Button viewButton = new Button("View");
             private final Button resultsButton = new Button("Results");
@@ -80,12 +85,10 @@ public class ManageExamsController {
                     ExamRow row = getTableView().getItems().get(getIndex());
                     showExamDetails(row.getExam());
                 });
-
                 resultsButton.setOnAction(event -> {
                     ExamRow row = getTableView().getItems().get(getIndex());
                     showExamResults(row.getExam());
                 });
-
                 deleteButton.setOnAction(event -> {
                     ExamRow row = getTableView().getItems().get(getIndex());
                     handleDeleteExam(row.getExam());
@@ -98,7 +101,6 @@ public class ManageExamsController {
                 setGraphic(empty ? null : buttons);
             }
         });
-
         examsTable.setItems(examRows);
     }
 
@@ -126,33 +128,27 @@ public class ManageExamsController {
     @FXML
     private void handleFilter() {
         String selected = subjectFilterCombo.getValue();
-
         List<Exam> exams;
         if ("All Subjects".equals(selected)) {
             exams = ExamService.getAllExams();
         } else {
             exams = ExamService.getExamsBySubject(selected);
         }
-
         displayExams(exams);
     }
 
     private void displayExams(List<Exam> exams) {
         examRows.clear();
-
         if (exams.isEmpty()) {
             showEmptyState();
             return;
         }
-
         hideEmptyState();
-
         for (Exam exam : exams) {
             int studentCount = ResultService.getResultsByExam(exam.getId()).size();
             ExamRow row = new ExamRow(exam, studentCount);
             examRows.add(row);
         }
-
         examCountLabel.setText(exams.size() + " exam" + (exams.size() != 1 ? "s" : ""));
     }
 
@@ -196,15 +192,11 @@ public class ManageExamsController {
             alert.showAndWait();
             return;
         }
-
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Exam Results");
         alert.setHeaderText(exam.getTitle() + " - Student Results");
-
         StringBuilder content = new StringBuilder();
         content.append("Total Students: ").append(results.size()).append("\n\n");
-
-        // Calculate average
         double totalPercentage = 0;
         for (Result r : results) {
             totalPercentage += r.getPercentage();
@@ -212,7 +204,6 @@ public class ManageExamsController {
         double avgPercentage = totalPercentage / results.size();
         content.append("Average Score: ").append(String.format("%.2f%%", avgPercentage)).append("\n\n");
         content.append("--- Student Details ---\n\n");
-
         for (Result r : results) {
             content.append("Student: ").append(r.getStudentUsername()).append("\n");
             content.append("Score: ").append(r.getCorrectAnswers()).append(" / ").append(r.getTotalQuestions()).append("\n");
@@ -220,7 +211,6 @@ public class ManageExamsController {
             content.append("Grade: ").append(r.getGrade()).append("\n");
             content.append("Time Taken: ").append(r.getTimeTaken() / 60).append(" min ").append(r.getTimeTaken() % 60).append(" sec\n\n");
         }
-
         alert.setContentText(content.toString());
         alert.getDialogPane().setPrefWidth(500);
         alert.getDialogPane().setPrefHeight(500);
@@ -232,14 +222,11 @@ public class ManageExamsController {
         confirmAlert.setTitle("Delete Exam");
         confirmAlert.setHeaderText("Are you sure?");
         confirmAlert.setContentText("This will permanently delete the exam:\n\"" + exam.getTitle() + "\"");
-
         Optional<ButtonType> result = confirmAlert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
             boolean deleted = ExamService.deleteExam(exam.getId());
-
             if (deleted) {
                 loadExams();
-
                 Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
                 successAlert.setTitle("Success");
                 successAlert.setHeaderText(null);
@@ -259,7 +246,6 @@ public class ManageExamsController {
         SceneManager.switchScene("/views/teacher-dashboard.fxml");
     }
 
-    // Inner class for table rows
     public static class ExamRow {
         private final Exam exam;
         private final int studentCount;
@@ -269,13 +255,30 @@ public class ManageExamsController {
             this.studentCount = studentCount;
         }
 
-        public Exam getExam() { return exam; }
+        public Exam getExam() {
+            return exam;
+        }
 
-        public String getTitle() { return exam.getTitle(); }
-        public String getSubject() { return exam.getSubject(); }
-        public String getQuestions() { return String.valueOf(exam.getQuestionIds().size()); }
-        public String getDuration() { return exam.getDuration() + " min"; }
-        public String getStudents() { return String.valueOf(studentCount); }
+        public String getTitle() {
+            return exam.getTitle();
+        }
+
+        public String getSubject() {
+            return exam.getSubject();
+        }
+
+        public String getQuestions() {
+            return String.valueOf(exam.getQuestionIds().size());
+        }
+
+        public String getDuration() {
+            return exam.getDuration() + " min";
+        }
+
+        public String getStudents() {
+            return String.valueOf(studentCount);
+        }
+
         public String getDate() {
             return exam.getCreatedDate() != null ? exam.getCreatedDate().substring(0, 10) : "N/A";
         }

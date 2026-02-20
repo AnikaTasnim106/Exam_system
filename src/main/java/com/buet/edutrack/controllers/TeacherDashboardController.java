@@ -51,8 +51,7 @@ public class TeacherDashboardController {
 
     @FXML
     private void handleManageStudents() {
-        System.out.println("Manage Students clicked");
-        // TODO: Navigate to student management page
+
     }
 
     @FXML
@@ -61,7 +60,7 @@ public class TeacherDashboardController {
     }
 
     @FXML
-    private void handleForum(){
+    private void handleForum() {
         SceneManager.switchScene("/views/forum-list.fxml");
     }
 }

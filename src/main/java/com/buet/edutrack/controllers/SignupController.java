@@ -4,6 +4,7 @@ import com.buet.edutrack.utils.SceneManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import com.buet.edutrack.services.UserService;
+
 public class SignupController {
 
     @FXML
@@ -29,23 +30,17 @@ public class SignupController {
 
     @FXML
     public void initialize() {
-        // Add role options
         roleComboBox.getItems().addAll("Student", "Teacher");
     }
 
     @FXML
     private void handleSignup() {
-        // Get input values
         String username = usernameField.getText().trim();
         String email = emailField.getText().trim();
         String password = passwordField.getText();
         String confirmPassword = confirmPasswordField.getText();
         String role = roleComboBox.getValue();
-
-        // Clear previous error
         errorLabel.setVisible(false);
-
-        // Validation
         if (username.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
             showError("Please fill in all fields!");
             return;
@@ -70,23 +65,17 @@ public class SignupController {
             showError("Please enter a valid email!");
             return;
         }
-
-        // Save user using UserService
         boolean success = UserService.registerUser(username, email, password, role);
 
         if (!success) {
             showError("Username already exists! Please choose another.");
             return;
         }
-
-        // Show success message
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Success");
         alert.setHeaderText(null);
         alert.setContentText("Account created successfully! Please login.");
         alert.showAndWait();
-
-        // Navigate to login
         SceneManager.switchScene("/views/login.fxml");
     }
 

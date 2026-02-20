@@ -51,14 +51,12 @@ public class StudentDashboardController {
 
     @FXML
     private void handleLeaderboard() {
-        System.out.println("Leaderboard clicked");
-        // TODO: Navigate to leaderboard
+
     }
 
     @FXML
     private void handlePractice() {
-        System.out.println("Practice clicked");
-        // TODO: Navigate to practice mode
+
     }
 
     @FXML

@@ -20,20 +20,30 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class ViewResultsController {
-
-    @FXML private Label totalExamsLabel;
-    @FXML private Label avgScoreLabel;
-    @FXML private Label bestGradeLabel;
-    @FXML private TableView<ResultRow> resultsTable;
-    @FXML private TableColumn<ResultRow, String> examTitleColumn;
-    @FXML private TableColumn<ResultRow, String> subjectColumn;
-    @FXML private TableColumn<ResultRow, String> scoreColumn;
-    @FXML private TableColumn<ResultRow, String> percentageColumn;
-    @FXML private TableColumn<ResultRow, String> gradeColumn;
-    @FXML private TableColumn<ResultRow, String> dateColumn;
-    @FXML private TableColumn<ResultRow, Void> actionsColumn;
-    @FXML private VBox emptyStateBox;
-
+    @FXML
+    private Label totalExamsLabel;
+    @FXML
+    private Label avgScoreLabel;
+    @FXML
+    private Label bestGradeLabel;
+    @FXML
+    private TableView<ResultRow> resultsTable;
+    @FXML
+    private TableColumn<ResultRow, String> examTitleColumn;
+    @FXML
+    private TableColumn<ResultRow, String> subjectColumn;
+    @FXML
+    private TableColumn<ResultRow, String> scoreColumn;
+    @FXML
+    private TableColumn<ResultRow, String> percentageColumn;
+    @FXML
+    private TableColumn<ResultRow, String> gradeColumn;
+    @FXML
+    private TableColumn<ResultRow, String> dateColumn;
+    @FXML
+    private TableColumn<ResultRow, Void> actionsColumn;
+    @FXML
+    private VBox emptyStateBox;
     private ObservableList<ResultRow> resultRows = FXCollections.observableArrayList();
 
     @FXML
@@ -49,15 +59,11 @@ public class ViewResultsController {
         percentageColumn.setCellValueFactory(new PropertyValueFactory<>("percentage"));
         gradeColumn.setCellValueFactory(new PropertyValueFactory<>("grade"));
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
-
-        // Style columns
-        examTitleColumn.setCellFactory(column -> createStyledCell("white", false));
-        subjectColumn.setCellFactory(column -> createStyledCell("white", true));
-        scoreColumn.setCellFactory(column -> createStyledCell("white", true));
-        percentageColumn.setCellFactory(column -> createStyledCell("white", true));
+        examTitleColumn.setCellFactory(column -> createStyledCell("black", false));
+        subjectColumn.setCellFactory(column -> createStyledCell("black", true));
+        scoreColumn.setCellFactory(column -> createStyledCell("black", true));
+        percentageColumn.setCellFactory(column -> createStyledCell("black", true));
         dateColumn.setCellFactory(column -> createStyledCell("#b0b0b0", false));
-
-        // Grade column with color coding
         gradeColumn.setCellFactory(column -> new TableCell<ResultRow, String>() {
             @Override
             protected void updateItem(String grade, boolean empty) {
@@ -72,8 +78,6 @@ public class ViewResultsController {
                 }
             }
         });
-
-        // Actions column
         actionsColumn.setCellFactory(column -> new TableCell<ResultRow, Void>() {
             private final Button viewButton = new Button("View Details");
 
@@ -91,7 +95,6 @@ public class ViewResultsController {
                 setGraphic(empty ? null : viewButton);
             }
         });
-
         resultsTable.setItems(resultRows);
     }
 
@@ -125,49 +128,38 @@ public class ViewResultsController {
             case "F":
                 return "#ff0000";
             default:
-                return "white";
+                return "red";
         }
     }
 
     private void loadResults() {
         String currentUsername = SessionManager.getCurrentUsername();
         if (currentUsername == null) {
-            currentUsername = "student"; // Fallback
+            currentUsername = "student";
         }
-
         List<Result> results = ResultService.getResultsByStudent(currentUsername);
-
         if (results.isEmpty()) {
             showEmptyState();
             return;
         }
-
         hideEmptyState();
-
-        // Calculate statistics
         int totalExams = results.size();
         double totalPercentage = 0;
         String bestGrade = "F";
         double bestPercentage = 0;
-
         for (Result result : results) {
             totalPercentage += result.getPercentage();
-
             if (result.getPercentage() > bestPercentage) {
                 bestPercentage = result.getPercentage();
                 bestGrade = result.getGrade();
             }
-
             Exam exam = ExamService.getExamById(result.getExamId());
             if (exam != null) {
                 ResultRow row = new ResultRow(result, exam);
                 resultRows.add(row);
             }
         }
-
         double avgPercentage = totalPercentage / totalExams;
-
-        // Update stats
         totalExamsLabel.setText(String.valueOf(totalExams));
         avgScoreLabel.setText(String.format("%.1f%%", avgPercentage));
         bestGradeLabel.setText(bestGrade);
@@ -178,7 +170,6 @@ public class ViewResultsController {
         resultsTable.setManaged(false);
         emptyStateBox.setVisible(true);
         emptyStateBox.setManaged(true);
-
         totalExamsLabel.setText("0");
         avgScoreLabel.setText("0%");
         bestGradeLabel.setText("-");
@@ -198,7 +189,6 @@ public class ViewResultsController {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Exam Details");
         alert.setHeaderText(exam.getTitle());
-
         StringBuilder content = new StringBuilder();
         content.append("Subject: ").append(exam.getSubject()).append("\n");
         content.append("Date: ").append(row.getDate()).append("\n\n");
@@ -206,23 +196,17 @@ public class ViewResultsController {
         content.append("Percentage: ").append(String.format("%.2f%%", result.getPercentage())).append("\n");
         content.append("Grade: ").append(result.getGrade()).append("\n");
         content.append("Time Taken: ").append(result.getTimeTaken() / 60).append(" min ").append(result.getTimeTaken() % 60).append(" sec\n\n");
-
         content.append("--- Answer Details ---\n\n");
-
-        // Get questions and show answers
         List<Question> questions = QuestionService.getAllQuestions();
         int qNum = 1;
-
         for (String questionId : exam.getQuestionIds()) {
             Question q = questions.stream()
                     .filter(question -> question.getId().equals(questionId))
                     .findFirst()
                     .orElse(null);
-
             if (q != null) {
                 String studentAnswer = result.getStudentAnswers().getOrDefault(questionId, "Not answered");
                 boolean isCorrect = studentAnswer.equals(q.getCorrectAnswer());
-
                 content.append("Q").append(qNum++).append(": ").append(q.getQuestionText()).append("\n");
                 content.append("Your Answer: ").append(studentAnswer);
                 content.append(isCorrect ? " ✓\n" : " ✗\n");
@@ -232,13 +216,9 @@ public class ViewResultsController {
                 content.append("\n");
             }
         }
-
         alert.setContentText(content.toString());
-
-        // Make dialog larger
         alert.getDialogPane().setPrefWidth(600);
         alert.getDialogPane().setPrefHeight(500);
-
         alert.showAndWait();
     }
 
@@ -252,7 +232,6 @@ public class ViewResultsController {
         SceneManager.switchScene("/views/student-dashboard.fxml");
     }
 
-    // Inner class for table rows
     public static class ResultRow {
         private final Result result;
         private final Exam exam;
@@ -262,18 +241,34 @@ public class ViewResultsController {
             this.exam = exam;
         }
 
-        public Result getResult() { return result; }
-        public Exam getExam() { return exam; }
+        public Result getResult() {
+            return result;
+        }
 
-        public String getExamTitle() { return exam.getTitle(); }
-        public String getSubject() { return exam.getSubject(); }
+        public Exam getExam() {
+            return exam;
+        }
+
+        public String getExamTitle() {
+            return exam.getTitle();
+        }
+
+        public String getSubject() {
+            return exam.getSubject();
+        }
+
         public String getScore() {
             return result.getCorrectAnswers() + " / " + result.getTotalQuestions();
         }
+
         public String getPercentage() {
             return String.format("%.2f%%", result.getPercentage());
         }
-        public String getGrade() { return result.getGrade(); }
+
+        public String getGrade() {
+            return result.getGrade();
+        }
+
         public String getDate() {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM dd, yyyy HH:mm");
             return result.getSubmittedAt().format(formatter);
