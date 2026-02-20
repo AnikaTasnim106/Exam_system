@@ -59,4 +59,9 @@ public class TeacherDashboardController {
     private void handleQuestionBank() {
         SceneManager.switchScene("/views/question-bank.fxml");
     }
+
+    @FXML
+    private void handleForum(){
+        SceneManager.switchScene("/views/forum-list.fxml");
+    }
 }

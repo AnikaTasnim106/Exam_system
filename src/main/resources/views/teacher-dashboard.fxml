@@ -55,6 +55,7 @@
             <Button fx:id="viewResultsBtn" onAction="#handleViewResults" prefWidth="230" style="-fx-background-color: transparent; -fx-text-fill: #a0a0a0; -fx-font-size: 15px; -fx-alignment: center-left; -fx-padding: 15 20; -fx-background-radius: 12;" text="📊 View Results" />
 
             <Button fx:id="manageStudentsBtn" onAction="#handleManageStudents" prefWidth="230" style="-fx-background-color: transparent; -fx-text-fill: #a0a0a0; -fx-font-size: 15px; -fx-alignment: center-left; -fx-padding: 15 20; -fx-background-radius: 12;" text="👥 Manage Students" />
+         <Button mnemonicParsing="false" onAction="#handleForum" prefWidth="230.0" style="-fx-background-color: transparent; -fx-text-fill: #a0a0a0; -fx-font-size: 15px; -fx-alignment: center-left; -fx-padding: 15 20; -fx-background-radius: 12;" styleClass="sidebar-button" text="💬 Forum" />
 
             <!-- Logout Button -->
             <Button fx:id="logoutButton" onAction="#handleLogout" prefWidth="230" style="-fx-background-color: #e94560; -fx-text-fill: white; -fx-font-size: 15px; -fx-alignment: center-left; -fx-padding: 15 20; -fx-background-radius: 12; -fx-font-weight: bold;" text="🚪 Log Out" />
