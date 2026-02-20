@@ -48,7 +48,7 @@
          <!-- Menu Buttons -->
          <Button prefWidth="230" style="-fx-background-color: #0f3460; -fx-text-fill: white; -fx-font-size: 15px; -fx-alignment: center-left; -fx-padding: 15 20; -fx-background-radius: 12; -fx-font-weight: bold;" styleClass="sidebar-button-active" text="🏠 Home" />
 
-         <Button prefWidth="230" style="-fx-background-color: transparent; -fx-text-fill: #a0a0a0; -fx-font-size: 15px; -fx-alignment: center-left; -fx-padding: 15 20; -fx-background-radius: 12;" styleClass="sidebar-button" text="💬 Forum" />
+         <Button onAction="#handleForum" prefWidth="230" style="-fx-background-color: transparent; -fx-text-fill: #a0a0a0; -fx-font-size: 15px; -fx-alignment: center-left; -fx-padding: 15 20; -fx-background-radius: 12;" styleClass="sidebar-button" text="💬 Forum" />
 
          <Button fx:id="attendExamBtn" onAction="#handleAttendExam" prefWidth="230" style="-fx-background-color: transparent; -fx-text-fill: #a0a0a0; -fx-font-size: 15px; -fx-alignment: center-left; -fx-padding: 15 20; -fx-background-radius: 12;" text="📝 Attend Exam" />
 

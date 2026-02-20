@@ -60,4 +60,9 @@ public class StudentDashboardController {
         System.out.println("Practice clicked");
         // TODO: Navigate to practice mode
     }
+
+    @FXML
+    private void handleForum(){
+        SceneManager.switchScene("/views/forum-list.fxml");
+    }
 }
