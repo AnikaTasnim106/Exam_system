@@ -1,17 +1,14 @@
-/* Dark Theme for EduTrack */
 .root {
     -fx-background-color: #1e1e2e;
     -fx-font-family: "Segoe UI", Arial, sans-serif;
 }
 
-/* Login Container */
 .login-container {
     -fx-background-color: #2b2b3c;
     -fx-background-radius: 15;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 20, 0, 0, 5);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 20, 0, 0, 5);
 }
 
-/* Text Fields */
 .text-field, .password-field {
     -fx-background-color: #363648;
     -fx-text-fill: #e0e0e0;
@@ -28,7 +25,6 @@
     -fx-border-width: 2;
 }
 
-/* TextArea */
 .text-area {
     -fx-background-color: #363648;
     -fx-text-fill: #e0e0e0;
@@ -39,7 +35,6 @@
     -fx-background-color: #363648;
 }
 
-/* Buttons */
 .button {
     -fx-background-color: #6c63ff;
     -fx-text-fill: white;
@@ -59,7 +54,6 @@
     -fx-background-color: #4a3acc;
 }
 
-/* Labels */
 .label {
     -fx-text-fill: #e0e0e0;
     -fx-font-size: 14px;
@@ -76,13 +70,11 @@
     -fx-font-size: 14px;
 }
 
-/* ComboBox - IMPROVED VISIBILITY */
 .combo-box {
     -fx-background-color: #363648;
     -fx-background-radius: 8;
 }
 
-/* ComboBox button/arrow area */
 .combo-box .arrow-button {
     -fx-background-color: #363648;
     -fx-background-radius: 0 8 8 0;
@@ -92,7 +84,6 @@
     -fx-background-color: white;
 }
 
-/* ComboBox text display */
 .combo-box .list-cell {
     -fx-background-color: #363648;
     -fx-text-fill: white;
@@ -100,13 +91,11 @@
     -fx-padding: 8;
 }
 
-/* ComboBox when showing value */
 .combo-box-base {
     -fx-background-color: #363648;
     -fx-text-fill: white;
 }
 
-/* Dropdown popup */
 .combo-box-popup .list-view {
     -fx-background-color: #2b2b3c;
     -fx-border-color: #6c63ff;
@@ -130,7 +119,6 @@
     -fx-text-fill: white;
 }
 
-/* Spinner */
 .spinner {
     -fx-background-color: #363648;
     -fx-background-radius: 8;
@@ -151,22 +139,19 @@
     -fx-background-color: white;
 }
 
-/* Error Label */
 .error-label {
     -fx-text-fill: #ff6b6b;
     -fx-font-size: 12px;
 }
 
-/* Top Bar */
 .top-bar {
     -fx-min-height: 80;
 }
 
-/* Dashboard Cards */
 .dashboard-card {
     -fx-background-color: #2b2b3c;
     -fx-background-radius: 15;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 15, 0, 0, 3);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 15, 0, 0, 3);
     -fx-cursor: hand;
 }
 
@@ -188,7 +173,6 @@
     -fx-text-alignment: center;
 }
 
-/* Card Buttons */
 .dashboard-card .button {
     -fx-background-color: #6c63ff;
     -fx-text-fill: white;
@@ -198,18 +182,15 @@
     -fx-font-weight: bold;
 }
 
-.dashboard-card .button:hover {
-    -fx-background-color: #5848ff;
+.dashboard-card .button:hover {-fx-background-color: #5848ff;
 }
 
-/* Error Label */
 .error-label {
     -fx-text-fill: #ff6b6b;
     -fx-font-size: 13px;
     -fx-font-weight: bold;
 }
 
-/* TableView */
 .table-view {
     -fx-background-color: #363648;
     -fx-background-radius: 10;
@@ -249,7 +230,6 @@
     -fx-background-color: #404052;
 }
 
-/* ScrollPane */
 .scroll-pane {
     -fx-background-color: transparent;
 }

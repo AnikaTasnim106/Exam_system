@@ -6,14 +6,13 @@ import java.util.List;
 
 public class Exam implements Serializable {
     private static final long serialVersionUID = 1L;
-
     private String id;
     private String title;
     private String subject;
     private String description;
-    private int duration; // in minutes
-    private List<String> questionIds; // IDs of questions in this exam
-    private String createdBy; // teacher username
+    private int duration;
+    private List<String> questionIds;
+    private String createdBy;
     private String createdDate;
 
     public Exam() {
@@ -37,29 +36,69 @@ public class Exam implements Serializable {
     }
 
     // Getters and Setters
-    public String getId() { return id; }
-    public void setId(String id) { this.id = id; }
+    public String getId() {
+        return id;
+    }
 
-    public String getTitle() { return title; }
-    public void setTitle(String title) { this.title = title; }
+    public void setId(String id) {
+        this.id = id;
+    }
 
-    public String getSubject() { return subject; }
-    public void setSubject(String subject) { this.subject = subject; }
+    public String getTitle() {
+        return title;
+    }
 
-    public String getDescription() { return description; }
-    public void setDescription(String description) { this.description = description; }
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-    public int getDuration() { return duration; }
-    public void setDuration(int duration) { this.duration = duration; }
+    public String getSubject() {
+        return subject;
+    }
 
-    public List<String> getQuestionIds() { return questionIds; }
-    public void setQuestionIds(List<String> questionIds) { this.questionIds = questionIds; }
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
 
-    public String getCreatedBy() { return createdBy; }
-    public void setCreatedBy(String createdBy) { this.createdBy = createdBy; }
+    public String getDescription() {
+        return description;
+    }
 
-    public String getCreatedDate() { return createdDate; }
-    public void setCreatedDate(String createdDate) { this.createdDate = createdDate; }
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
+    public List<String> getQuestionIds() {
+        return questionIds;
+    }
+
+    public void setQuestionIds(List<String> questionIds) {
+        this.questionIds = questionIds;
+    }
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public String getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(String createdDate) {
+        this.createdDate = createdDate;
+    }
 
     public void addQuestion(String questionId) {
         if (!questionIds.contains(questionId)) {

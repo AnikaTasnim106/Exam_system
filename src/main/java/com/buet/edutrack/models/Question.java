@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 public class Question implements Serializable {
     private static final long serialVersionUID = 1L;
-
     private String id;
     private String subject;
     private String questionText;
@@ -12,9 +11,9 @@ public class Question implements Serializable {
     private String optionB;
     private String optionC;
     private String optionD;
-    private String correctAnswer; // "A", "B", "C", or "D"
+    private String correctAnswer;
     private String explanation;
-    private String difficulty; // "Easy", "Medium", "Hard"
+    private String difficulty;
 
     public Question() {
         this.id = generateId();
@@ -38,36 +37,85 @@ public class Question implements Serializable {
         return "Q" + System.currentTimeMillis();
     }
 
-    // Getters and Setters
-    public String getId() { return id; }
-    public void setId(String id) { this.id = id; }
+    public String getId() {
+        return id;
+    }
 
-    public String getSubject() { return subject; }
-    public void setSubject(String subject) { this.subject = subject; }
+    public void setId(String id) {
+        this.id = id;
+    }
 
-    public String getQuestionText() { return questionText; }
-    public void setQuestionText(String questionText) { this.questionText = questionText; }
+    public String getSubject() {
+        return subject;
+    }
 
-    public String getOptionA() { return optionA; }
-    public void setOptionA(String optionA) { this.optionA = optionA; }
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
 
-    public String getOptionB() { return optionB; }
-    public void setOptionB(String optionB) { this.optionB = optionB; }
+    public String getQuestionText() {
+        return questionText;
+    }
 
-    public String getOptionC() { return optionC; }
-    public void setOptionC(String optionC) { this.optionC = optionC; }
+    public void setQuestionText(String questionText) {
+        this.questionText = questionText;
+    }
 
-    public String getOptionD() { return optionD; }
-    public void setOptionD(String optionD) { this.optionD = optionD; }
+    public String getOptionA() {
+        return optionA;
+    }
 
-    public String getCorrectAnswer() { return correctAnswer; }
-    public void setCorrectAnswer(String correctAnswer) { this.correctAnswer = correctAnswer; }
+    public void setOptionA(String optionA) {
+        this.optionA = optionA;
+    }
 
-    public String getExplanation() { return explanation; }
-    public void setExplanation(String explanation) { this.explanation = explanation; }
+    public String getOptionB() {
+        return optionB;
+    }
 
-    public String getDifficulty() { return difficulty; }
-    public void setDifficulty(String difficulty) { this.difficulty = difficulty; }
+    public void setOptionB(String optionB) {
+        this.optionB = optionB;
+    }
+
+    public String getOptionC() {
+        return optionC;
+    }
+
+    public void setOptionC(String optionC) {
+        this.optionC = optionC;
+    }
+
+    public String getOptionD() {
+        return optionD;
+    }
+
+    public void setOptionD(String optionD) {
+        this.optionD = optionD;
+    }
+
+    public String getCorrectAnswer() {
+        return correctAnswer;
+    }
+
+    public void setCorrectAnswer(String correctAnswer) {
+        this.correctAnswer = correctAnswer;
+    }
+
+    public String getExplanation() {
+        return explanation;
+    }
+
+    public void setExplanation(String explanation) {
+        this.explanation = explanation;
+    }
+
+    public String getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(String difficulty) {
+        this.difficulty = difficulty;
+    }
 
     @Override
     public String toString() {
