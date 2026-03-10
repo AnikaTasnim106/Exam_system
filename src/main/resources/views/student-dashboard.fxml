@@ -65,7 +65,7 @@
     </left>
 
     <center>
-        <ScrollPane fitToHeight="false" fitToWidth="true"
+        <ScrollPane fitToHeight="false" fitToWidth="true" vbarPolicy="AS_NEEDED" hbarPolicy="NEVER"
                     style="-fx-background: #f5f5f5; -fx-background-color: #f5f5f5;">
             <content>
                 <VBox spacing="30" style="-fx-background-color: #f5f5f5;">
@@ -78,8 +78,8 @@
                             <ColumnConstraints percentWidth="50"/>
                         </columnConstraints>
                         <rowConstraints>
-                            <RowConstraints/>
-                            <RowConstraints/>
+                            <RowConstraints minHeight="280" prefHeight="300"/>
+                            <RowConstraints minHeight="280" prefHeight="300"/>
                         </rowConstraints>
 
                         <StackPane
@@ -171,6 +171,9 @@
                         </StackPane>
 
                     </GridPane>
+
+                    <Region minHeight="100"/>
+
                 </VBox>
             </content>
         </ScrollPane>
