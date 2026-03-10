@@ -51,7 +51,7 @@ public class StudentDashboardController {
 
     @FXML
     private void handleLeaderboard() {
-
+        SceneManager.switchScene("/views/leaderboard.fxml");
     }
 
     @FXML
