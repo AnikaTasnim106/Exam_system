@@ -237,3 +237,8 @@
 .scroll-pane .viewport {
     -fx-background-color: transparent;
 }
+.button:hover {
+    -fx-background-color: derive(-fx-background, -10%);
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+}

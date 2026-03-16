@@ -56,7 +56,7 @@ public class StudentDashboardController {
 
     @FXML
     private void handlePractice() {
-
+        SceneManager.switchScene("/views/practice.fxml");
     }
 
     @FXML
