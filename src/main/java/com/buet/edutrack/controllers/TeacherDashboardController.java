@@ -51,7 +51,7 @@ public class TeacherDashboardController {
 
     @FXML
     private void handleManageStudents() {
-
+        SceneManager.switchScene("/views/manage-students.fxml");
     }
 
     @FXML

@@ -6,7 +6,6 @@
 
 <BorderPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #1e1e2e;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buet.edutrack.controllers.ViewResultsController">
 
-    <!-- Top Bar -->
     <top>
         <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-background-color: #0f3460; -fx-padding: 20 30;">
             <Label style="-fx-font-size: 28px; -fx-text-fill: #f8ffbd; -fx-font-weight: bold;" text="My Results" />
@@ -21,23 +20,18 @@
                 <Insets bottom="40" left="50" right="50" top="40" />
             </padding>
 
-            <!-- Stats Cards -->
             <HBox spacing="20">
-                <!-- Total Exams -->
                 <VBox alignment="CENTER" spacing="10" style="-fx-background-color: linear-gradient(to bottom right, #667eea 0%, #764ba2 100%); -fx-background-radius: 15; -fx-padding: 25;" HBox.hgrow="ALWAYS">
                     <Label style="-fx-font-size: 40px;" text="📝" />
                     <Label fx:id="totalExamsLabel" style="-fx-text-fill: white; -fx-font-size: 32px; -fx-font-weight: bold;" text="0" />
                     <Label style="-fx-text-fill: rgba(255,255,255,0.9); -fx-font-size: 14px;" text="Exams Taken" />
                 </VBox>
-
-                <!-- Average Score -->
                 <VBox alignment="CENTER" spacing="10" style="-fx-background-color: linear-gradient(to bottom right, #ffeaa7 0%, #fdcb6e 100%); -fx-background-radius: 15; -fx-padding: 25;" HBox.hgrow="ALWAYS">
                     <Label style="-fx-font-size: 40px;" text="⭐" />
                     <Label fx:id="avgScoreLabel" style="-fx-text-fill: white; -fx-font-size: 32px; -fx-font-weight: bold;" text="0%" />
                     <Label style="-fx-text-fill: rgba(255,255,255,0.9); -fx-font-size: 14px;" text="Average Score" />
                 </VBox>
 
-                <!-- Best Grade -->
                 <VBox alignment="CENTER" spacing="10" style="-fx-background-color: linear-gradient(to bottom right, #00C851 0%, #007E33 100%); -fx-background-radius: 15; -fx-padding: 25;" HBox.hgrow="ALWAYS">
                     <Label style="-fx-font-size: 40px;" text="🏆" />
                     <Label fx:id="bestGradeLabel" style="-fx-text-fill: white; -fx-font-size: 32px; -fx-font-weight: bold;" text="-" />
@@ -45,7 +39,6 @@
                 </VBox>
             </HBox>
 
-            <!-- Results Table -->
             <VBox spacing="15" style="-fx-background-color: #2b2b3c; -fx-background-radius: 15; -fx-padding: 30;">
                 <Label style="-fx-text-fill: white; -fx-font-size: 22px; -fx-font-weight: bold;" text="📊 Exam History" />
                 
@@ -61,8 +54,6 @@
                     </columns>
                 </TableView>
             </VBox>
-
-            <!-- Empty State -->
             <VBox fx:id="emptyStateBox" alignment="CENTER" managed="false" spacing="15" style="-fx-background-color: #2b2b3c; -fx-background-radius: 15; -fx-padding: 60;" visible="false">
                 <Label style="-fx-font-size: 60px;" text="📋" />
                 <Label style="-fx-text-fill: white; -fx-font-size: 22px; -fx-font-weight: bold;" text="No Results Yet" />

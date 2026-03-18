@@ -20,7 +20,7 @@ public class Main extends Application {
         } catch (Exception e) {
             System.out.println("CSS not found - running without styling");
         }
-        primaryStage.setTitle("EduTrack - Online Exam System");
+        primaryStage.setTitle("EduTrack-Online Exam System");
         primaryStage.setScene(scene);
         primaryStage.show();
     }

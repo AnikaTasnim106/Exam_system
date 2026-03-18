@@ -15,10 +15,14 @@ import java.util.List;
 
 public class ExamListController {
 
-    @FXML private ComboBox<String> subjectFilterCombo;
-    @FXML private Label examCountLabel;
-    @FXML private GridPane examsGrid;
-    @FXML private VBox emptyStateBox;
+    @FXML
+    private ComboBox<String> subjectFilterCombo;
+    @FXML
+    private Label examCountLabel;
+    @FXML
+    private GridPane examsGrid;
+    @FXML
+    private VBox emptyStateBox;
 
     @FXML
     public void initialize() {
@@ -43,20 +47,17 @@ public class ExamListController {
     @FXML
     private void handleFilter() {
         String selected = subjectFilterCombo.getValue();
-
         List<Exam> exams;
         if ("All Subjects".equals(selected)) {
             exams = ExamService.getAllExams();
         } else {
             exams = ExamService.getExamsBySubject(selected);
         }
-
         displayExams(exams);
     }
 
     private void displayExams(List<Exam> exams) {
         examsGrid.getChildren().clear();
-
         if (exams.isEmpty()) {
             examsGrid.setVisible(false);
             examsGrid.setManaged(false);
@@ -77,14 +78,12 @@ public class ExamListController {
         for (Exam exam : exams) {
             VBox examCard = createExamCard(exam);
             examsGrid.add(examCard, col, row);
-
             col++;
-            if (col > 1) { // 2 columns
+            if (col > 1) {
                 col = 0;
                 row++;
             }
         }
-
         examCountLabel.setText(exams.size() + " exam" + (exams.size() != 1 ? "s" : "") + " available");
     }
 
@@ -97,13 +96,9 @@ public class ExamListController {
         card.setPadding(new Insets(25));
         card.setPrefWidth(500);
         card.setPrefHeight(220);
-
-        // Exam title
         Label titleLabel = new Label(exam.getTitle());
         titleLabel.setStyle("-fx-text-fill: white; -fx-font-size: 22px; -fx-font-weight: bold;");
         titleLabel.setWrapText(true);
-
-        // Subject badge
         Label subjectLabel = new Label(exam.getSubject());
         subjectLabel.setStyle("-fx-background-color: rgba(255,255,255,0.3);" +
                 "-fx-text-fill: white;" +
@@ -111,35 +106,22 @@ public class ExamListController {
                 "-fx-background-radius: 15;" +
                 "-fx-font-size: 12px;" +
                 "-fx-font-weight: bold;");
-
-        // Info row
         HBox infoBox = new HBox(20);
         infoBox.setAlignment(Pos.CENTER_LEFT);
-
         Label questionsLabel = new Label("📝 " + exam.getQuestionIds().size() + " questions");
         questionsLabel.setStyle("-fx-text-fill: rgba(255,255,255,0.9); -fx-font-size: 14px;");
-
         Label durationLabel = new Label("⏱️ " + exam.getDuration() + " min");
         durationLabel.setStyle("-fx-text-fill: rgba(255,255,255,0.9); -fx-font-size: 14px;");
-
         infoBox.getChildren().addAll(questionsLabel, durationLabel);
-
-        // Description
         Label descLabel = new Label(exam.getDescription().isEmpty() ? "No description" : exam.getDescription());
         descLabel.setStyle("-fx-text-fill: rgba(255,255,255,0.8); -fx-font-size: 13px;");
         descLabel.setWrapText(true);
         descLabel.setMaxHeight(40);
-
-        // Spacer
         Region spacer = new Region();
         VBox.setVgrow(spacer, Priority.ALWAYS);
-
-        // Button
         String currentUsername = SessionManager.getCurrentUsername();
         if (currentUsername == null) currentUsername = "student";
-
         boolean alreadyTaken = ResultService.hasStudentTakenExam(currentUsername, exam.getId());
-
         Button actionBtn;
         if (alreadyTaken) {
             actionBtn = new Button("✓ Completed");
@@ -187,7 +169,6 @@ public class ExamListController {
     }
 
     private void handleStartExam(Exam exam) {
-        // Confirmation dialog
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Start Exam");
         alert.setHeaderText(exam.getTitle());
@@ -195,7 +176,6 @@ public class ExamListController {
                 "Duration: " + exam.getDuration() + " minutes\n" +
                 "Questions: " + exam.getQuestionIds().size() + "\n\n" +
                 "Are you ready?");
-
         alert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
                 TakeExamController.setCurrentExam(exam);

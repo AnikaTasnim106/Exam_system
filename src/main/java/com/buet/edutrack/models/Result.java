@@ -43,7 +43,6 @@ public class Result implements Serializable {
         this.percentage = (correct * 100.0) / total;
     }
 
-    // Getters and Setters
     public String getId() {
         return id;
     }

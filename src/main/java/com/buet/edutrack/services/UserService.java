@@ -47,6 +47,10 @@ public class UserService {
         return null;
     }
 
+    public static List<User> getAllUsers() {
+        return new ArrayList<>(users);
+    }
+
     private static void saveUsers() {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(USER_FILE))) {
             oos.writeObject(users);
