@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="700.0" prefWidth="1200.0" style="-fx-background-image: url('/images/galaxy.png'); -fx-background-size: cover; -fx-background-color: #1e1e2e;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buet.edutrack.controllers.PracticeSessionController">
+<VBox prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: #1e1e2e;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buet.edutrack.controllers.PracticeSessionController">
 
    <!-- Top Bar -->
    <HBox prefHeight="80.0" style="-fx-background-color: rgba(30,30,46,0.85);">
@@ -27,10 +27,22 @@
                <Font size="24.0" />
             </font></Label>
       </VBox>
-      <Button mnemonicParsing="false" onAction="#handleBack" style="-fx-background-color: white; -fx-text-fill: black; -fx-font-weight: bold; -fx-background-radius: 5; -fx-padding: 10 20; -fx-background-insets: 0; -fx-border-color: transparent;" text="← Back">
+      <Button mnemonicParsing="false" onAction="#handleBack"
+              style="-fx-background-color: white;
+               -fx-text-fill: black;
+               -fx-font-weight: bold;
+               -fx-background-radius: 5;
+               -fx-font-size: 20px; /* Fixed font size */
+               -fx-focus-traversable: false;"
+              text="← Back"
+              prefWidth="120" prefHeight="50">
+         <padding>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+         </padding>
          <font>
-            <Font size="22.0" />
-         </font></Button>
+            <Font size="20.0" />
+         </font>
+      </Button>
    </HBox>
 
    <!-- Progress Bar Row -->

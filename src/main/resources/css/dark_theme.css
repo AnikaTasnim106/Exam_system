@@ -45,10 +45,6 @@
     -fx-cursor: hand;
 }
 
-.button:hover {
-    -fx-background-color: #5848ff;
-    -fx-scale-y: 1.05;
-}
 
 .button:pressed {
     -fx-background-color: #4a3acc;
@@ -237,8 +233,50 @@
 .scroll-pane .viewport {
     -fx-background-color: transparent;
 }
+
+
+.no-hover:hover {
+    -fx-scale-x: 1.0;
+    -fx-scale-y: 1.0;
+    -fx-background-color: white;
+}
+
+/* Styling for the button */
+/* Unified .button Styling */
+.button {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+    -fx-font-size: 20px; /* Set the default font size */
+    -fx-cursor: hand;
+    -fx-padding: 12 30;
+}
+
+/* Hover effect */
 .button:hover {
-    -fx-background-color: derive(-fx-background, -10%);
-    -fx-scale-x: 1;
-    -fx-scale-y: 1;
+    -fx-background-color: #f1f1f1; /* Change background color on hover */
+    -fx-text-fill: black; /* Ensure text color remains the same */
+    -fx-font-size: 20px; /* Keep font size the same during hover */
+}
+
+/* Dashboard card button */
+.dashboard-card .button {
+    -fx-background-color: #6c63ff;
+    -fx-text-fill: white;
+    -fx-background-radius: 5;
+    -fx-font-size: 14px;
+    -fx-padding: 8 20;
+}
+
+/* Dashboard card button hover */
+.dashboard-card .button:hover {
+    -fx-background-color: #5848ff;
+}
+
+/* Error label */
+.error-label {
+    -fx-text-fill: #ff6b6b;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
 }

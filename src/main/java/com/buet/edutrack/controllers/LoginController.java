@@ -6,6 +6,7 @@ import com.buet.edutrack.utils.SceneManager;
 import com.buet.edutrack.utils.SessionManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import com.buet.edutrack.NetworkClient;
 
 public class LoginController {
     @FXML
@@ -27,28 +28,30 @@ public class LoginController {
 
     @FXML
     private void handleLogin() {
-        String username = usernameField.getText();
-        String password = passwordField.getText();
-        String selectedRole = roleComboBox.getValue();
-        errorLabel.setVisible(false);
-        if (username.isEmpty() || password.isEmpty() || selectedRole == null) {
-            showError("Please fill in all fields!");
+        String username = usernameField.getText().trim();
+        String password = passwordField.getText().trim();
+
+        if (username.isEmpty() || password.isEmpty()) {
+            errorLabel.setText("Please fill in all fields!");
+            errorLabel.setVisible(true);
             return;
         }
-        User user = UserService.authenticateUser(username, password);
-        if (user == null) {
-            showError("Invalid username or password!");
-            return;
-        }
-        if (!user.getRole().equals(selectedRole)) {
-            showError("Please select the correct role for your account!");
-            return;
-        }
-        SessionManager.setCurrentUser(user);
-        if (user.getRole().equals("Student")) {
-            SceneManager.switchScene("/views/student-dashboard.fxml");
-        } else if (user.getRole().equals("Teacher")) {
-            SceneManager.switchScene("/views/teacher-dashboard.fxml");
+
+        String response = NetworkClient.sendLoginRequest(username, password);
+
+        if (response != null && response.startsWith("SUCCESS:")) {
+            String role = response.split(":")[1];
+            User user = UserService.getUserByUsername(username);
+            SessionManager.setCurrentUser(user);
+            if (role.equals("Teacher")) {
+                SceneManager.switchScene("/views/teacher-dashboard.fxml");
+            } else {
+                SceneManager.switchScene("/views/student-dashboard.fxml");
+            }
+        } else {
+            String reason = response != null ? response.split(":")[1] : "Connection failed";
+            errorLabel.setText(reason);
+            errorLabel.setVisible(true);
         }
     }
 
