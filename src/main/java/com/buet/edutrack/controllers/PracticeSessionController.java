@@ -31,6 +31,8 @@ public class PracticeSessionController {
     @FXML private Button nextButton;
     @FXML private ProgressBar progressBar;
 
+    @FXML private Label backLabel;
+
     private static Result currentResult;
     private List<Question> wrongQuestions;
     private int currentIndex = 0;
@@ -47,6 +49,8 @@ public class PracticeSessionController {
         }
         loadWrongQuestions();
         showQuestion();
+        backLabel.setOnMouseEntered(e -> backLabel.setStyle("-fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-background-color: #6c63ff; -fx-background-radius: 8; -fx-padding: 10 20; -fx-cursor: hand; -fx-border-color: #6c63ff; -fx-border-width: 1; -fx-border-radius: 8;"));
+        backLabel.setOnMouseExited(e -> backLabel.setStyle("-fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-background-color: #2d1b69; -fx-background-radius: 8; -fx-padding: 10 20; -fx-cursor: hand; -fx-border-color: #6c63ff; -fx-border-width: 1; -fx-border-radius: 8;"));
     }
 
     private void loadWrongQuestions(){
@@ -157,6 +161,10 @@ public class PracticeSessionController {
 
     @FXML
     private void handleBack(){
+        SceneManager.switchScene("/views/practice.fxml");
+    }
+    @FXML
+    private void handleBackLabel() {
         SceneManager.switchScene("/views/practice.fxml");
     }
 }

@@ -49,6 +49,12 @@ public class CreateExamController {
     private ObservableList<QuestionRow> questionRows = FXCollections.observableArrayList();
     private Map<String, Boolean> selectedQuestions = new HashMap<>();
 
+    @FXML private Button backButton;
+    @FXML private Button selectAllBtn;
+    @FXML private Button deselectAllBtn;
+    @FXML private Button cancelBtn;
+    @FXML private Button createExamSubmitBtn;
+
     @FXML
     public void initialize() {
         setupSubjectCombo();

@@ -27,10 +27,13 @@ public class PracticeController {
     @FXML private Label titleLabel;
     @FXML private FlowPane examsContainer;
     @FXML private Label weakConceptsLabel;
+    @FXML private Button backButton;
 
     @FXML
     public void initialize(){
         loadPastExams();
+        backButton.setOnMouseEntered(e -> backButton.setStyle("-fx-background-color: #6c63ff; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-border-color: #6c63ff; -fx-border-width: 1; -fx-border-radius: 8; -fx-padding: 10 20; -fx-font-size: 14px;"));
+        backButton.setOnMouseExited(e -> backButton.setStyle("-fx-background-color: #2d1b69; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-border-color: #6c63ff; -fx-border-width: 1; -fx-border-radius: 8; -fx-padding: 10 20; -fx-font-size: 14px;"));
     }
 
     private void loadPastExams(){
@@ -124,8 +127,12 @@ public class PracticeController {
         Button practiceButton = new Button("▶  Start Practice");
         practiceButton.setStyle("-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-pref-width: 220;");
         practiceButton.setOnAction(e -> handlePracticeExam(result));
+        practiceButton.setOnMouseEntered(e -> practiceButton.setStyle("-fx-background-color: #1976D2; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-pref-width: 220;"));
+        practiceButton.setOnMouseExited(e -> practiceButton.setStyle("-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-pref-width: 220;"));
 
         card.getChildren().addAll(subjectLabel, titleLabel, circleContainer, statusLabel, practiceButton);
+        card.setOnMouseEntered(e -> card.setStyle("-fx-background-color: #f0f0f0; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 15, 0, 0, 6);"));
+        card.setOnMouseExited(e -> card.setStyle("-fx-background-color: white; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 4);"));
         return card;
     }
 

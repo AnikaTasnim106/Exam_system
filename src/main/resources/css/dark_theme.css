@@ -241,21 +241,7 @@
     -fx-background-color: white;
 }
 
-.button {
-    -fx-background-color: white;
-    -fx-text-fill: black;
-    -fx-font-weight: bold;
-    -fx-background-radius: 5;
-    -fx-font-size: 20px;
-    -fx-cursor: hand;
-    -fx-padding: 12 30;
-}
 
-.button:hover {
-    -fx-background-color: #f1f1f1;
-    -fx-text-fill: black;
-    -fx-font-size: 20px;
-}
 
 .dashboard-card .button {
     -fx-background-color: #6c63ff;
@@ -272,4 +258,53 @@
     -fx-text-fill: #ff6b6b;
     -fx-font-size: 13px;
     -fx-font-weight: bold;
+}
+
+.menu-button:hover{
+    -fx-background-color: #0f3460;
+}
+
+.no-hover:hover {
+    -fx-scale-x: 1.0;
+    -fx-scale-y: 1.0;
+    -fx-background-color: white;
+}
+
+.button:hover {
+    -fx-scale-x: 1.0;
+    -fx-scale-y: 1.0;
+}
+
+.sidebar-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #a0a0a0;
+    -fx-font-size: 15px;
+    -fx-alignment: center-left;
+    -fx-padding: 15 20;
+    -fx-background-radius: 12;
+}
+
+.sidebar-button:hover {
+    -fx-background-color: #0f3460;
+    -fx-text-fill: white;
+}
+
+.menu-button:hover {
+    -fx-background-color: #0f3460;
+}
+
+.back-button {
+    -fx-background-color: #2d1b69;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-border-color: #6c63ff;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+    -fx-padding: 10 20;
+}
+
+.back-button:hover {
+    -fx-background-color: #6c63ff;
+    -fx-text-fill: white;
 }

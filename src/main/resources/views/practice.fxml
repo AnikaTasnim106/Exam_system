@@ -23,22 +23,10 @@
                <Font size="24.0" />
             </font></Label>
       </VBox>
-       <Button mnemonicParsing="false" onAction="#handleBack"
-               style="-fx-background-color: white;
-               -fx-text-fill: black;
-               -fx-font-weight: bold;
-               -fx-background-radius: 5;
-               -fx-font-size: 20px; /* Fixed font size */
-               -fx-focus-traversable: false;"
-               text="← Back"
-               prefWidth="120" prefHeight="50">
-           <padding>
-               <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
-           </padding>
-           <font>
-               <Font size="20.0" />
-           </font>
-       </Button>
+       <Button fx:id="backButton" mnemonicParsing="false" onAction="#handleBack"
+               style="-fx-background-color: #2d1b69; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-border-color: #6c63ff; -fx-border-width: 1; -fx-border-radius: 8; -fx-padding: 10 20; -fx-font-size: 14px;"
+               text="← Back" />
+
    </HBox>
 
    <ScrollPane fitToWidth="true" style="-fx-background: transparent; -fx-background-color: transparent;" VBox.vgrow="ALWAYS">

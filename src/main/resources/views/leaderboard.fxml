@@ -16,7 +16,7 @@
          </padding>
          <children>
             <Label fx:id="titleLabel" prefWidth="900.0" style="-fx-text-fill: white; -fx-font-size: 28; -fx-font-weight: bold;" text="🏆 Leaderboard" />
-            <Button mnemonicParsing="false" onAction="#handleBack" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #6c63ff; -fx-text-fill: white; -fx-background-radius: 8;" text="← Back" />
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#handleBack" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #2d1b69; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-border-color: #6c63ff; -fx-border-width: 1; -fx-border-radius: 8; -fx-padding: 10 20;" text="← Back" />
          </children>
       </HBox>
       <HBox prefHeight="50.0" prefWidth="1200.0" spacing="15.0" style="-fx-background-color: #2b2b3c; -fx-border-color: #363648; -fx-border-width: 1 0 0 0;">

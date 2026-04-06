@@ -18,16 +18,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
+import javafx.scene.control.Button;
 
 public class LeaderboardController {
     @FXML private ComboBox<String> subjectFilterCombo;
     @FXML private VBox leaderboardContainer;
     @FXML private Label titleLabel;
+    @FXML private Button backButton;
 
     @FXML
     public void initialize(){
         setupSubjectFilter();
         loadLeaderboard();
+        backButton.setOnMouseEntered(e -> backButton.setStyle("-fx-background-color: #6c63ff; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-border-color: #6c63ff; -fx-border-width: 1; -fx-border-radius: 8; -fx-padding: 10 20;"));
+        backButton.setOnMouseExited(e -> backButton.setStyle("-fx-background-color: #2d1b69; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-border-color: #6c63ff; -fx-border-width: 1; -fx-border-radius: 8; -fx-padding: 10 20;"));
 
     }
     private void setupSubjectFilter(){

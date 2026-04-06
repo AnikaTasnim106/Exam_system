@@ -12,6 +12,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
 
 import java.time.format.DateTimeFormatter;
+import javafx.scene.control.Button;
 
 public class ForumThreadController {
     @FXML private Label postTitleLabel;
@@ -21,6 +22,7 @@ public class ForumThreadController {
     @FXML private VBox repliesContainer;
     @FXML private TextArea replyArea;
     @FXML private Label replyErrorLabel;
+    @FXML private Button backButton;
 
     private static ForumPost currentPost;
 
@@ -39,6 +41,8 @@ public class ForumThreadController {
         postMetaLabel.setText("Posted by: " + currentPost.getPostedBy() + " • " + currentPost.getPostedAt().format(DateTimeFormatter.ofPattern("MMM dd, yyyy")));
         postContentLabel.setText(currentPost.getContent());
         loadReplies();
+        backButton.setOnMouseEntered(e -> backButton.setStyle("-fx-background-color: #6c63ff; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-border-color: #6c63ff; -fx-border-width: 1; -fx-border-radius: 8; -fx-padding: 10 20;"));
+        backButton.setOnMouseExited(e -> backButton.setStyle("-fx-background-color: #2d1b69; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-border-color: #6c63ff; -fx-border-width: 1; -fx-border-radius: 8; -fx-padding: 10 20;"));
 
     }
 

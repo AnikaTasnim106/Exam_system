@@ -23,11 +23,15 @@ public class ExamListController {
     private GridPane examsGrid;
     @FXML
     private VBox emptyStateBox;
+    @FXML private Button backButton;
 
     @FXML
     public void initialize() {
         setupSubjectFilter();
         loadExams();
+        String backOriginal = backButton.getStyle();
+        backButton.setOnMouseEntered(e -> backButton.setStyle(backOriginal + "-fx-background-color: #6c63ff;"));
+        backButton.setOnMouseExited(e -> backButton.setStyle(backOriginal));
     }
 
     private void setupSubjectFilter() {

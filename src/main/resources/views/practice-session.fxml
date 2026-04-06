@@ -10,73 +10,46 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<VBox prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: #1e1e2e;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buet.edutrack.controllers.PracticeSessionController">
+<VBox prefHeight="700.0" prefWidth="1200.0" style="-fx-background-image: url('/images/galaxy.png'); -fx-background-size: cover; -fx-background-color: #1e1e2e;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buet.edutrack.controllers.PracticeSessionController">
 
-   <!-- Top Bar -->
-   <HBox prefHeight="80.0" style="-fx-background-color: rgba(30,30,46,0.85);">
+   <HBox maxHeight="80.0" minHeight="80.0" prefHeight="80.0" style="-fx-background-color: rgba(30,30,46,0.9);">
       <padding><Insets bottom="15" left="30" right="30" top="15" /></padding>
-      <VBox spacing="3" HBox.hgrow="ALWAYS">
-         <Label style="-fx-text-fill: white; -fx-font-size: 22px; -fx-font-weight: bold;" text="EduTrack - Online Exam System">
-            <font>
-               <Font size="26.0" />
-            </font></Label>
-         <Label style="-fx-text-fill: #b0b0b0; -fx-font-size: 13px;" text="Practice Session">
-            <font>
-               <Font size="24.0" />
-            </font></Label>
+      <VBox alignment="CENTER_LEFT" spacing="3" HBox.hgrow="ALWAYS">
+         <Label style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;" text="EduTrack - Online Exam System" />
+         <Label style="-fx-text-fill: #b0b0b0; -fx-font-size: 13px;" text="Practice Session" />
       </VBox>
-      <Button mnemonicParsing="false" onAction="#handleBack"
-              style="-fx-background-color: white;
-               -fx-text-fill: black;
-               -fx-font-weight: bold;
-               -fx-background-radius: 5;
-               -fx-font-size: 20px; /* Fixed font size */
-               -fx-focus-traversable: false;"
-              text="← Back"
-              prefWidth="120" prefHeight="50">
-         <padding>
-            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
-         </padding>
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
+      <Label fx:id="backLabel" onMouseClicked="#handleBackLabel" style="-fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-background-color: #2d1b69; -fx-background-radius: 8; -fx-padding: 10 20; -fx-cursor: hand; -fx-border-color: #6c63ff; -fx-border-width: 1; -fx-border-radius: 8;" text="← Back" />
    </HBox>
 
-   <!-- Progress Bar Row -->
-   <HBox alignment="CENTER_LEFT" spacing="15" style="-fx-background-color: rgba(30,30,46,0.7);">
-      <padding><Insets bottom="12" left="30" right="30" top="12" /></padding>
-      <Label fx:id="progressLabel" style="-fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;" />
+   <HBox alignment="CENTER_LEFT" maxHeight="50.0" minHeight="50.0" spacing="15" style="-fx-background-color: rgba(30,30,46,0.7);">
+      <padding><Insets bottom="10" left="30" right="30" top="10" /></padding>
+      <Label fx:id="progressLabel" style="-fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold;" />
       <ProgressBar fx:id="progressBar" prefWidth="400" progress="0" style="-fx-accent: #6c63ff;" HBox.hgrow="ALWAYS" />
       <Label style="-fx-background-color: #363648; -fx-text-fill: #b0b0b0; -fx-font-size: 11px; -fx-font-weight: bold; -fx-background-radius: 4; -fx-padding: 4 8;" text="PRACTICE MODE" />
    </HBox>
 
-   <!-- Main Content -->
    <HBox spacing="20" VBox.vgrow="ALWAYS">
       <padding><Insets bottom="20" left="30" right="30" top="20" /></padding>
 
-      <!-- Question Card -->
       <VBox spacing="20" style="-fx-background-color: white; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 15, 0, 0, 5);" HBox.hgrow="ALWAYS">
-         <padding><Insets left="30.0" right="30.0" top="30.0" /></padding>
+         <padding><Insets bottom="25" left="30" right="30" top="25" /></padding>
 
-         <Label fx:id="questionLabel" style="-fx-text-fill: #1a1a2e; -fx-font-size: 22px; -fx-font-weight: bold;" wrapText="true" />
+         <Label fx:id="questionLabel" style="-fx-text-fill: #1a1a2e; -fx-font-size: 20px; -fx-font-weight: bold;" wrapText="true" />
 
          <HBox alignment="CENTER_LEFT" spacing="8">
             <Label fx:id="subjectLabel" style="-fx-background-color: #e8f4fd; -fx-text-fill: #2196F3; -fx-font-size: 12px; -fx-background-radius: 4; -fx-padding: 4 8; -fx-border-color: #2196F3; -fx-border-radius: 4; -fx-border-width: 1;" />
             <Label fx:id="difficultyLabel" style="-fx-background-color: #f0f0f0; -fx-text-fill: #666666; -fx-font-size: 12px; -fx-background-radius: 4; -fx-padding: 4 8;" />
          </HBox>
 
-         <!-- Options 2x2 Grid -->
-         <GridPane hgap="15" vgap="15" VBox.vgrow="ALWAYS">
+         <GridPane hgap="15" vgap="15">
             <columnConstraints>
                <ColumnConstraints percentWidth="50" />
                <ColumnConstraints percentWidth="50" />
             </columnConstraints>
             <rowConstraints>
-               <RowConstraints />
-               <RowConstraints />
+               <RowConstraints minHeight="70" />
+               <RowConstraints minHeight="70" />
             </rowConstraints>
 
             <VBox fx:id="optionABox" spacing="5" style="-fx-background-color: #f8f9fa; -fx-background-radius: 8; -fx-border-color: #dee2e6; -fx-border-radius: 8; -fx-border-width: 1; -fx-cursor: hand;" GridPane.columnIndex="0" GridPane.rowIndex="0">
@@ -115,7 +88,6 @@
 
          <Region VBox.vgrow="ALWAYS" />
 
-         <!-- Feedback and Next -->
          <Label fx:id="feedbackLabel" style="-fx-font-size: 15px; -fx-font-weight: bold;" visible="false" />
          <HBox alignment="CENTER_RIGHT">
             <Button fx:id="nextButton" mnemonicParsing="false" onAction="#handleNext" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 12 30; -fx-font-size: 14px;" text="Next →" visible="false" />

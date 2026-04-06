@@ -9,16 +9,19 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-
+import javafx.scene.control.Button;
 public class ForumNewPostController {
     @FXML private TextField titleField;
     @FXML private ComboBox<String> subjectCombo;
     @FXML private TextArea contentArea;
     @FXML private Label errorLabel;
 
+    @FXML private Button backButton;
     @FXML
     private void initialize(){
         setupSubjectCombo();
+        backButton.setOnMouseEntered(e -> backButton.setStyle("-fx-background-color: #6c63ff; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-border-color: #6c63ff; -fx-border-width: 1; -fx-border-radius: 8; -fx-padding: 10 20;"));
+        backButton.setOnMouseExited(e -> backButton.setStyle("-fx-background-color: #2d1b69; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-border-color: #6c63ff; -fx-border-width: 1; -fx-border-radius: 8; -fx-padding: 10 20;"));
     }
 
     private void setupSubjectCombo(){
