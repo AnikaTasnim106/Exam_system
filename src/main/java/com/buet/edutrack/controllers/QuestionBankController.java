@@ -35,11 +35,18 @@ public class QuestionBankController {
     private VBox emptyStateBox;
     private ObservableList<Question> questionsList = FXCollections.observableArrayList();
 
+    @FXML private Button backButton;
+    @FXML private Button addQuestionBtn;
     @FXML
     public void initialize() {
         setupTable();
         setupSubjectFilter();
         loadQuestions();
+        backButton.setOnMouseEntered(e -> backButton.setStyle("-fx-background-color: #6c63ff; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 8; -fx-font-weight: bold; -fx-border-color: #6c63ff; -fx-border-width: 1; -fx-border-radius: 8;"));
+        backButton.setOnMouseExited(e -> backButton.setStyle("-fx-background-color: #2d1b69; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 8; -fx-font-weight: bold; -fx-border-color: #6c63ff; -fx-border-width: 1; -fx-border-radius: 8;"));
+
+        addQuestionBtn.setOnMouseEntered(e -> addQuestionBtn.setStyle("-fx-background-color: #5848ff; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10 20; -fx-background-radius: 8; -fx-font-weight: bold; -fx-cursor: hand;"));
+        addQuestionBtn.setOnMouseExited(e -> addQuestionBtn.setStyle("-fx-background-color: #6c63ff; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10 20; -fx-background-radius: 8; -fx-font-weight: bold; -fx-cursor: hand;"));
     }
 
     private void setupTable() {

@@ -29,6 +29,10 @@ public class AddQuestionController {
     @FXML
     private Label errorLabel;
 
+    @FXML private Button backButton;
+    @FXML private Button saveBtn;
+    @FXML private Button clearBtn;
+
     @FXML
     public void initialize() {
         subjectCombo.getItems().addAll(
@@ -37,6 +41,14 @@ public class AddQuestionController {
         );
         difficultyCombo.getItems().addAll("Easy", "Medium", "Hard");
         correctAnswerCombo.getItems().addAll("A", "B", "C", "D");
+        backButton.setOnMouseEntered(e -> backButton.setStyle("-fx-background-color: #6c63ff; -fx-text-fill: white; -fx-padding: 10 20; -fx-background-radius: 8; -fx-font-weight: bold; -fx-border-color: #6c63ff; -fx-border-width: 1; -fx-border-radius: 8;"));
+        backButton.setOnMouseExited(e -> backButton.setStyle("-fx-background-color: #2d1b69; -fx-text-fill: white; -fx-padding: 10 20; -fx-background-radius: 8; -fx-font-weight: bold; -fx-border-color: #6c63ff; -fx-border-width: 1; -fx-border-radius: 8;"));
+
+        saveBtn.setOnMouseEntered(e -> saveBtn.setStyle("-fx-background-color: #5848ff; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10 20; -fx-background-radius: 8; -fx-font-weight: bold; -fx-cursor: hand;"));
+        saveBtn.setOnMouseExited(e -> saveBtn.setStyle("-fx-background-color: #6c63ff; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10 20; -fx-background-radius: 8; -fx-font-weight: bold; -fx-cursor: hand;"));
+
+        clearBtn.setOnMouseEntered(e -> clearBtn.setStyle("-fx-background-color: #c0392b; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10 20; -fx-background-radius: 8; -fx-font-weight: bold; -fx-cursor: hand;"));
+        clearBtn.setOnMouseExited(e -> clearBtn.setStyle("-fx-background-color: #e94560; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10 20; -fx-background-radius: 8; -fx-font-weight: bold; -fx-cursor: hand;"));
     }
 
     @FXML
@@ -112,7 +124,7 @@ public class AddQuestionController {
 
     @FXML
     private void handleBack() {
-        SceneManager.switchScene("/views/teacher-dashboard.fxml");
+        SceneManager.switchScene("/views/question-bank.fxml");
     }
 
     private void showError(String message) {

@@ -22,8 +22,8 @@
         <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-background-color: #0f3460; -fx-padding: 20 30;">
             <Label style="-fx-font-size: 28px; -fx-text-fill: #f8ffbd; -fx-font-weight: bold;" text="Create New Exam"/>
             <Region HBox.hgrow="ALWAYS"/>
-            <Button onAction="#handleBack"
-                    style="-fx-background-color: #e94560; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 8; -fx-font-weight: bold;"
+            <Button fx:id="backButton" onAction="#handleBack"
+                    style="-fx-background-color: #2d1b69; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 8; -fx-font-weight: bold; -fx-border-color: #6c63ff; -fx-border-width: 1; -fx-border-radius: 8;"
                     text="← Back to Dashboard"/>
         </HBox>
     </top>
@@ -87,12 +87,12 @@
                         </VBox>
                         <Region HBox.hgrow="ALWAYS"/>
                         <VBox alignment="BOTTOM_CENTER">
-                            <Button onAction="#handleSelectAll"
+                            <Button fx:id="selectAllBtn" onAction="#handleSelectAll"
                                     style="-fx-background-color: #6c63ff; -fx-text-fill: white; -fx-padding: 10 20; -fx-background-radius: 8; -fx-font-weight: bold;"
                                     text="Select All"/>
                         </VBox>
                         <VBox alignment="BOTTOM_CENTER">
-                            <Button onAction="#handleDeselectAll"
+                            <Button fx:id="deselectAllBtn" onAction="#handleDeselectAll"
                                     style="-fx-background-color: #e94560; -fx-text-fill: white; -fx-padding: 10 20; -fx-background-radius: 8; -fx-font-weight: bold;"
                                     text="Deselect All"/>
                         </VBox>
@@ -109,10 +109,10 @@
                     </TableView>
                 </VBox>
                 <HBox alignment="CENTER" spacing="20">
-                    <Button onAction="#handleCancel"
+                    <Button fx:id="cancelBtn" onAction="#handleCancel"
                             style="-fx-background-color: #666666; -fx-text-fill: white; -fx-padding: 15 40; -fx-background-radius: 10; -fx-font-size: 16px; -fx-font-weight: bold;"
                             text="Cancel"/>
-                    <Button onAction="#handleCreateExam"
+                    <Button fx:id="createExamSubmitBtn" onAction="#handleCreateExam"
                             style="-fx-background-color: #6c63ff; -fx-text-fill: white; -fx-padding: 15 40; -fx-background-radius: 10; -fx-font-size: 16px; -fx-font-weight: bold;"
                             text="Create Exam"/>
                 </HBox>

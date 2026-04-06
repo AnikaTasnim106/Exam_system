@@ -46,10 +46,13 @@ public class ManageStudentsController {
     private VBox emptyStateBox;
     private ObservableList<StudentRow> studentRows = FXCollections.observableArrayList();
 
+    @FXML private Button backButton;
     @FXML
     public void initialize() {
         setupTable();
         loadStudents();
+        backButton.setOnMouseEntered(e -> backButton.setStyle("-fx-background-color: #6c63ff; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 8; -fx-font-weight: bold; -fx-border-color: #6c63ff; -fx-border-width: 1; -fx-border-radius: 8;"));
+        backButton.setOnMouseExited(e -> backButton.setStyle("-fx-background-color: #2d1b69; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 8; -fx-font-weight: bold; -fx-border-color: #6c63ff; -fx-border-width: 1; -fx-border-radius: 8;"));
     }
 
     private void setupTable() {

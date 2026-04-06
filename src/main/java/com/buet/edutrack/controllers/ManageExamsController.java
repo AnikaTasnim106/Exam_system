@@ -41,11 +41,18 @@ public class ManageExamsController {
     private VBox emptyStateBox;
     private ObservableList<ExamRow> examRows = FXCollections.observableArrayList();
 
+    @FXML private Button backButton;
+    @FXML private Button createNewBtn;
     @FXML
     public void initialize() {
         setupSubjectFilter();
         setupTable();
         loadExams();
+        backButton.setOnMouseEntered(e -> backButton.setStyle("-fx-background-color: #6c63ff; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 8; -fx-font-weight: bold; -fx-border-color: #6c63ff; -fx-border-width: 1; -fx-border-radius: 8;"));
+        backButton.setOnMouseExited(e -> backButton.setStyle("-fx-background-color: #2d1b69; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 8; -fx-font-weight: bold; -fx-border-color: #6c63ff; -fx-border-width: 1; -fx-border-radius: 8;"));
+
+        createNewBtn.setOnMouseEntered(e -> createNewBtn.setStyle("-fx-background-color: #007E33; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 8; -fx-font-weight: bold;"));
+        createNewBtn.setOnMouseExited(e -> createNewBtn.setStyle("-fx-background-color: #00C851; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 8; -fx-font-weight: bold;"));
     }
 
     private void setupSubjectFilter() {
