@@ -45,7 +45,7 @@
 
             <Button fx:id="createExamBtn" onAction="#handleCreateExam" prefWidth="230" style="-fx-background-color: transparent; -fx-text-fill: #a0a0a0; -fx-font-size: 15px; -fx-alignment: center-left; -fx-padding: 15 20; -fx-background-radius: 12;" text="📝 Create Exam" />
 
-            <Button fx:id="viewResultsBtn" onAction="#handleViewResults" prefWidth="230" style="-fx-background-color: transparent; -fx-text-fill: #a0a0a0; -fx-font-size: 15px; -fx-alignment: center-left; -fx-padding: 15 20; -fx-background-radius: 12;" text="📊 View Results" />
+            <Button fx:id="viewResultsBtn" onAction="#handleViewResults" prefWidth="230" style="-fx-background-color: transparent; -fx-text-fill: #a0a0a0; -fx-font-size: 15px; -fx-alignment: center-left; -fx-padding: 15 20; -fx-background-radius: 12;" text="📊Manage Exams" />
 
             <Button fx:id="logoutButton" onAction="#handleLogout" prefWidth="230" style="-fx-background-color: #1a1a2e; -fx-text-fill: white; -fx-font-size: 15px; -fx-alignment: center-left; -fx-padding: 15 20; -fx-background-radius: 12; -fx-font-weight: bold;" text="🚪 Log Out" />
 
@@ -78,7 +78,7 @@
                                 <Label style="-fx-font-size: 65px;" text="📝" />
                                 <Label style="-fx-font-size: 24px; -fx-text-fill: white; -fx-font-weight: bold;" text="Create Exam" />
                                 <Label style="-fx-font-size: 14px; -fx-text-fill: rgba(255,255,255,0.9);" text="Design new exams for students" textAlignment="CENTER" wrapText="true" />
-                                <Button fx:id = "createExamCardBtn" onAction="#handleCreateExam" style="-fx-background-color: white; -fx-text-fill: #667eea; -fx-font-weight: bold; -fx-font-size: 13px; -fx-padding: 12 35; -fx-background-radius: 25; -fx-cursor: hand;" text="CREATE NEW">
+                                <Button fx:id="createExamCardBtn" onAction="#handleCreateExam" style="-fx-background-color: white; -fx-text-fill: #667eea; -fx-font-weight: bold; -fx-font-size: 13px; -fx-padding: 12 35; -fx-background-radius: 25; -fx-cursor: hand;" text="CREATE NEW">
                                     <VBox.margin>
                                         <Insets top="8" />
                                     </VBox.margin>
@@ -91,9 +91,9 @@
                                     <Insets bottom="35" left="40" right="40" top="35" />
                                 </padding>
                                 <Label style="-fx-font-size: 65px;" text="📊" />
-                                <Label style="-fx-font-size: 24px; -fx-text-fill: white; -fx-font-weight: bold;" text="View Results" />
+                                <Label style="-fx-font-size: 24px; -fx-text-fill: white; -fx-font-weight: bold;" text="Manage Exams" />
                                 <Label style="-fx-font-size: 14px; -fx-text-fill: rgba(255,255,255,0.9);" text="Check student performance" textAlignment="CENTER" wrapText="true" />
-                                <Button fx:id = "viewResultsCardBtn" onAction="#handleViewResults" style="-fx-background-color: white; -fx-text-fill: #888888; -fx-font-weight: bold; -fx-font-size: 13px; -fx-padding: 12 35; -fx-background-radius: 25; -fx-cursor: hand;" text="VIEW RESULTS">
+                                <Button fx:id="viewResultsCardBtn" onAction="#handleViewResults" style="-fx-background-color: white; -fx-text-fill: #888888; -fx-font-weight: bold; -fx-font-size: 13px; -fx-padding: 12 35; -fx-background-radius: 25; -fx-cursor: hand;" text="VIEW RESULTS">
                                     <VBox.margin>
                                         <Insets top="8" />
                                     </VBox.margin>
