@@ -74,7 +74,6 @@ public class TakeExamController {
     private void loadExam() {
         examTitleLabel.setText(currentExam.getTitle());
 
-        // Load questions
         for (String questionId : currentExam.getQuestionIds()) {
             Question q = QuestionService.getAllQuestions().stream()
                     .filter(question -> question.getId().equals(questionId))
@@ -151,7 +150,7 @@ public class TakeExamController {
         currentQuestionIndex = index;
         Question question = questions.get(index);
 
-        // Update header
+
         questionNumberLabel.setText("Question " + (index + 1) + " of " + questions.size());
         questionSubjectLabel.setText(question.getSubject());
 
@@ -169,10 +168,9 @@ public class TakeExamController {
                 break;
         }
 
-        // Update question text
         questionTextLabel.setText(question.getQuestionText());
 
-        // Create options
+
         optionsBox.getChildren().clear();
         optionsGroup = new ToggleGroup();
 
@@ -192,13 +190,13 @@ public class TakeExamController {
             option.setStyle("-fx-text-fill: white; -fx-font-size: 16px;");
             option.setPadding(new Insets(10));
 
-            // Set previously selected answer
+
             if (studentAnswers.containsKey(question.getId()) &&
                     studentAnswers.get(question.getId()).equals(optionValues[i])) {
                 option.setSelected(true);
             }
 
-            // Save answer when selected
+
             option.setOnAction(e -> {
                 studentAnswers.put(question.getId(), (String) option.getUserData());
                 updateQuestionNavButton(currentQuestionIndex, true);
@@ -208,11 +206,11 @@ public class TakeExamController {
             optionsBox.getChildren().add(option);
         }
 
-        // Update navigation buttons
+
         prevButton.setDisable(index == 0);
         nextButton.setText(index == questions.size() - 1 ? "Finish" : "Next →");
 
-        // Update navigation grid
+
         updateQuestionNavButton(index, studentAnswers.containsKey(question.getId()));
     }
 
@@ -249,7 +247,6 @@ public class TakeExamController {
 
     @FXML
     private void handleSubmitExam() {
-        // Check if all questions answered
         int unanswered = questions.size() - studentAnswers.size();
 
         String message;
