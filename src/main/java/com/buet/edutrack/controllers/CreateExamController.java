@@ -62,23 +62,23 @@ public class CreateExamController {
         setupFilters();
         setupTable();
         loadQuestions();
-        // Back button - purple
+
         backButton.setOnMouseEntered(e -> backButton.setStyle("-fx-background-color: #6c63ff; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 8; -fx-font-weight: bold;"));
         backButton.setOnMouseExited(e -> backButton.setStyle("-fx-background-color: #2d1b69; -fx-text-fill: white; -fx-padding: 10 25; -fx-background-radius: 8; -fx-font-weight: bold; -fx-border-color: #6c63ff; -fx-border-width: 1; -fx-border-radius: 8;"));
 
-// Select All - darker purple
+
         selectAllBtn.setOnMouseEntered(e -> selectAllBtn.setStyle("-fx-background-color: #5848ff; -fx-text-fill: white; -fx-padding: 10 20; -fx-background-radius: 8; -fx-font-weight: bold;"));
         selectAllBtn.setOnMouseExited(e -> selectAllBtn.setStyle("-fx-background-color: #6c63ff; -fx-text-fill: white; -fx-padding: 10 20; -fx-background-radius: 8; -fx-font-weight: bold;"));
 
-// Deselect All - darker red
+
         deselectAllBtn.setOnMouseEntered(e -> deselectAllBtn.setStyle("-fx-background-color: #c0392b; -fx-text-fill: white; -fx-padding: 10 20; -fx-background-radius: 8; -fx-font-weight: bold;"));
         deselectAllBtn.setOnMouseExited(e -> deselectAllBtn.setStyle("-fx-background-color: #e94560; -fx-text-fill: white; -fx-padding: 10 20; -fx-background-radius: 8; -fx-font-weight: bold;"));
 
-// Cancel - darker grey
+
         cancelBtn.setOnMouseEntered(e -> cancelBtn.setStyle("-fx-background-color: #444444; -fx-text-fill: white; -fx-padding: 15 40; -fx-background-radius: 10; -fx-font-size: 16px; -fx-font-weight: bold;"));
         cancelBtn.setOnMouseExited(e -> cancelBtn.setStyle("-fx-background-color: #666666; -fx-text-fill: white; -fx-padding: 15 40; -fx-background-radius: 10; -fx-font-size: 16px; -fx-font-weight: bold;"));
 
-// Create Exam - darker purple
+
         createExamSubmitBtn.setOnMouseEntered(e -> createExamSubmitBtn.setStyle("-fx-background-color: #5848ff; -fx-text-fill: white; -fx-padding: 15 40; -fx-background-radius: 10; -fx-font-size: 16px; -fx-font-weight: bold;"));
         createExamSubmitBtn.setOnMouseExited(e -> createExamSubmitBtn.setStyle("-fx-background-color: #6c63ff; -fx-text-fill: white; -fx-padding: 15 40; -fx-background-radius: 10; -fx-font-size: 16px; -fx-font-weight: bold;"));
     }
